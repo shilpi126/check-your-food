@@ -1,0 +1,30 @@
+.heading{
+ margin: 0;
+    height: 2rem;
+    width: 100%;
+    position: sticky;
+    background: #5d7c55;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-weight:500;
+    font-family:monospace;
+    
+    font-size:xx-large;
+}
+
+.heading-two{
+    height: 1.5rem;
+    width: 100%;
+    position: sticky;
+    background: #7c6a55;
+    padding: 10px;
+    color:black;
+    font-weight:400;
+    font-size: large;
+    display: flex;
+    
+    justify-content: space-evenly;
+    
+    
+}

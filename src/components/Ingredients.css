@@ -1,0 +1,51 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+
+    height: 100%;
+    width: 100%;
+}
+
+.container form{
+    height: 2rem;
+    width: 30rem;
+    padding: 15px;
+    background-color: rgb(82, 85, 85);
+    border: 1px solid gray;
+    border-radius: 5px;
+    
+    
+}
+
+.container form input{
+    height: 0.5rem;
+    width: 15rem;
+    padding: 10px;
+    
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-right: 2px;
+    
+} 
+
+label{
+    color: white;
+}
+.container form button{
+    height: 1.9rem;
+    width: 5rem;
+    color: white;
+    background-color: rgb(236, 97, 10);
+    border: 1px solid gray;
+    border-radius: 5px;
+
+    
+} 
+
+.container h2{
+
+font-weight: 400;
+}

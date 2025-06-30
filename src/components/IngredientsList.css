@@ -1,0 +1,13 @@
+.list{
+    height: 1.5rem;
+    background-color: rgb(188, 194, 194);
+    width: 20rem;
+    margin-top: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.icon{
+    color: red;
+}
