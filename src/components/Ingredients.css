@@ -10,19 +10,22 @@
 }
 
 .container form{
-    height: 2rem;
+    height: 5rem;
     width: 30rem;
     padding: 15px;
-    background-color: rgb(82, 85, 85);
+    background-color: #7c6a55;
     border: 1px solid gray;
     border-radius: 5px;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     
 }
 
 .container form input{
     height: 0.5rem;
-    width: 15rem;
+    width: 19.8rem;
     padding: 10px;
     
     border: 1px solid gray;
@@ -33,19 +36,38 @@
 
 label{
     color: white;
+    margin-right: 5px;
 }
 .container form button{
-    height: 1.9rem;
-    width: 5rem;
+    height: 1.8rem;
+    width: 100%;
     color: white;
-    background-color: rgb(236, 97, 10);
-    border: 1px solid gray;
+    background-color: rgb(27, 2, 2);
+    border: 1px solid rgb(12, 11, 11);
     border-radius: 5px;
+    margin-top: 15px;
+    
 
     
 } 
 
 .container h2{
-
+font-size: medium;
 font-weight: 400;
+margin-bottom: 5px;
+
+
+
 }
+
+
+.item-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px 50px ;
+    
+}
+
+

@@ -6,7 +6,7 @@ const Header = () => {
     <h1 className='heading'>Pick Your Food Smartly!</h1>
     <div className='heading-two' >
         <div>INGREDIENTS</div>
-        <div>SUGER</div>
+        <div>SUGAR</div>
         <div>SALT</div>
     </div>
     </React.Fragment>

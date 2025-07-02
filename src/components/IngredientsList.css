@@ -1,13 +1,54 @@
-.list{
+.container-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 10rem;
+    width: 100%;
+    margin: 1rem;
+    background-color: gray;
+    border: 1px solid rgb(178, 173, 173);
+}
+
+
+.listG{
     height: 1.5rem;
-    background-color: rgb(188, 194, 194);
-    width: 20rem;
-    margin-top: 10px;
+    color: rgb(13, 169, 13);
+    background-color: white;
+    border: 1px solid rgba(130, 92, 70, 0.914);
+    width: 5rem;
+    margin: 10px;
     text-align: center;
     padding: 5px;
     border-radius: 5px;
 }
 
+
+.listR{
+    height: 1.5rem;
+    color: rgb(247, 62, 11);
+    background-color: white;
+    border: 1px solid rgba(130, 92, 70, 0.914);
+    width: 5rem;
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+
 .icon{
     color: red;
+}
+
+
+.btn{
+    height: 3rem;
+    width: 15rem;
+    background-color: rgba(10, 1, 24, 0.919);
+    color: white;
+    border: none;
+    font-size: larger;
+    border-radius: 5px;
+    margin-top: 1rem;
+
 }
