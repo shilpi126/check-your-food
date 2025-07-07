@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./IngredientsList.css"
 import Modal from '../UI/Modal';
+
 const IngredientsList = (props) => {
   const [result,setResult] = useState({})
   const [active, setActive] = useState(false);
@@ -33,8 +34,6 @@ const IngredientsList = (props) => {
     }else{
       const obj = {
         msg:" Your Food is Healthy!",
-
-
         
       }
       setResult(obj);

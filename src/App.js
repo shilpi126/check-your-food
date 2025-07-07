@@ -1,19 +1,19 @@
 
 import { useState } from 'react';
-import './App.css';
 import Header from './components/Header';
 import Ingredients from './components/Ingredients';
-import Modal from './UI/Modal';
+
+import Register from './pages/Register';
 
 
 function App() {
 
 
   return (
-    <div className="App">
-
-      <Header/>
-      <Ingredients/>
+    <div >
+      <Register/>
+      {/* <Header/>
+      <Ingredients/> */}
       
     </div>
   );
