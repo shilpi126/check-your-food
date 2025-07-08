@@ -10,6 +10,8 @@ const Register = () => {
   const [email, setEmail]=useState("");
   const [username, setUserName]=useState("");
 
+  
+
 
   return (
     <div  className='bg-box'>

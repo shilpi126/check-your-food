@@ -1,30 +1,68 @@
 .heading{
  margin: 0;
-    height: 2rem;
+    height: 4rem;
     width: 100%;
-    position: sticky;
-    background: #5d7c55;
-    text-align: center;
-    padding: 10px;
-    color: white;
-    font-weight:500;
-    font-family:monospace;
+    background: rgb(128, 128, 128,0.2);
+  
     
-    font-size:xx-large;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(2, 104, 2);
+    z-index: 100;
+    top: 0;
+    
+    
 }
 
-.heading-two{
-    height: 1.5rem;
-    width: 100%;
-    position: sticky;
-    background: #7c6a55;
-    padding: 10px;
-    color:black;
-    font-weight:400;
-    font-size: large;
-    display: flex;
+.heading .logo {
     
-    justify-content: space-evenly;
-    
+    width: 20%;
+    height: 10rem;
+    background-image: url("../assets/food_logo.png");
+    background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 15px;
+  
+  
+  
+  
+}
+
+
+
+.heading ul{
+ display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
     
 }
+
+
+.heading ul li{
+    margin-left: 30px;
+list-style-type: none;
+
+
+
+
+}
+
+
+
+
+.heading button{
+    width: 20%;
+    height: 30px;
+
+    
+    
+    color: red;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    border-radius: 5px;
+}
+

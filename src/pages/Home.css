@@ -1,0 +1,102 @@
+.home-container{
+    margin-top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home-container img{
+    margin-top: 0;
+    width: 100%;
+    
+}
+
+.text{
+    width: 30rem;
+    height: 20rem;
+    /* background-color: rgb(1, 12, 19,0.2); */
+    position: absolute;
+    top: 10rem;
+    left:10%;
+    padding: 10px;
+    text-align: center;
+
+    
+    
+}
+
+.text h1{
+    color: rgb(244, 180, 5);
+    
+    font-weight: 400;
+    font-size:40px;
+    font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, cursive;
+
+ 
+
+    
+}
+
+.text h2{
+    color: rgb(4, 95, 4);
+    font-weight: 600;
+    font-size:40px;
+    
+}
+
+
+.section-one{
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+
+
+
+.section-one .img-card{
+    width: 45%;
+    height: 100%;
+
+    background-color: aqua;
+}
+
+
+.section-one .img-card img{
+    width: 100%;
+    height: 100%;
+    
+
+}
+
+
+
+
+.section-one .text-card{
+    width: 45%;
+    height: 100%;
+    background-color: rgb(122, 120, 123,0.2);
+
+
+}
+
+.text-card h2{
+    text-align: center;
+    color: rgb(3, 81, 3);
+}
+
+.text-card p{
+color: black;
+margin: 10px;
+
+
+}
+
+
+.section-two{
+
+}
+
+
+
