@@ -41,12 +41,16 @@
 }
 
 
-.heading ul li{
+.heading ul li {
     margin-left: 30px;
 list-style-type: none;
+text-decoration: none;
 
+}
 
-
+.heading ul li a{
+color: green;
+text-decoration: none;
 
 }
 

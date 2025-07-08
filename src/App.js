@@ -1,12 +1,13 @@
 
-import { useState } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Ingredients from './components/Ingredients';
 
 import Register from './pages/Register';
 import Home from './pages/Home';
 
-import {BrowserRouter,Router,Route,Routes} from "react-router-dom"
+import {BrowserRouter,Route,Routes} from "react-router-dom"
+import Footer from './components/Footer';
 
 
 function App() {
@@ -15,14 +16,14 @@ function App() {
   return (
     <BrowserRouter>
     <div>
-      {/* <Register/> */}
+      
+      <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/food' element={<Ingredients/>}/>
-        
-      
-  
+        <Route path='/register' element={<Register/>}/>
       </Routes>
+        
     </div>
     </BrowserRouter>
   );

@@ -10,7 +10,7 @@ const Home = () => {
   
   return (
     <div className='home-container'>
-      <Header/>
+      {/* <Header/> */}
       <img src={banner}/>
 
 
@@ -35,7 +35,7 @@ const Home = () => {
 
 
       <div></div>
-      <Footer/>
+  
     </div>
   )
 }

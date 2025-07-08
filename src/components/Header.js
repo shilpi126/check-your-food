@@ -2,6 +2,7 @@ import React from 'react'
 import "./Header.css"
 import logo from "../assets/food_logo.png"
 import { ImSwitch } from "react-icons/im";
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
 
@@ -23,11 +24,13 @@ window.addEventListener('scroll',()=>{
       
       <div className='logo'></div>
       <ul>
-        <li>Food</li>
-        <li>Drinks</li>
-        <li>Health Issue</li>
-        <li>About</li>
-        <li>Contact</li>
+        <li><Link to="/food">Food</Link></li>
+        
+        <li><Link to="/drink">Drinks</Link></li>
+        <li><Link to="/health-issues">Health Issue</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+      
       </ul>
       
       <button><ImSwitch size={20}/></button>

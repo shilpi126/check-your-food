@@ -7,8 +7,12 @@ const IngredientsList = (props) => {
   const [active, setActive] = useState(false);
   let list = props.items;
 
+  
+
  
  const countItem = (list) =>{
+
+  
   let count = 0;
     for(let i=0; i<list.length; i++){
       if(list[i].found === true){
@@ -22,6 +26,7 @@ const IngredientsList = (props) => {
 
   const handleClick = () => {
     setActive(true);
+  
   const total  = countItem(list);
   
     if(total>3){

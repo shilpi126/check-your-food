@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 import "./Ingredients.css"
 import { data } from '../data';
 import IngredientsList from './IngredientsList';
+import { CiLock } from "react-icons/ci";
+import Button from '../UI/Button';
+import Input from '../UI/Input';
+import { Label } from '../UI/Label';
 
 const Ingredients = () => {
     const [ingredients, setIngredients] = useState("");
@@ -10,6 +14,8 @@ const Ingredients = () => {
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
+        alert(ingredients);
         let obj = {
           ingredients,
           found:false,
@@ -33,23 +39,42 @@ const Ingredients = () => {
 
   return (
     <React.Fragment>
-    <div className='container'>
-        <h2>Ingredients Form</h2>
-        <form onSubmit={handleFormSubmit}>
+   <div  className='bg-card'>
+      <h2 className='form-title'>Ingredients Form</h2>
+
+        <div className='form-card'>
+          <h1 ><CiLock /></h1>
+          <form onSubmit={handleFormSubmit}>
             <div>
-            <label htmlFor='ingredients'>Enter Ingredients : </label>
-            <input
-            type='text'
-            id='ingredients'
-            value={ingredients}
-            onChange={(e)=>setIngredients(e.target.value)}
-            placeholder='Ingredients...'
-            required
-            />
+              
+              <Label
+              htmlFor="ingredients"
+              text=""
+              className="form-label"
+              />
+                <Input
+              type='text'
+              id='ingredients'
+              value={ingredients}
+              onChange={(e)=>{setIngredients(e.target.value)}}
+              placeholder='Enter ingrdients...'
+              required
+              className="form-input"
+              />
             </div>
-            <button type='submit'>Submit</button>
-        </form>
+
+            <Button 
+            type='submit'
+            className='custom-btn'
+            text="Submit"
+            />
+            
+          </form>
+        </div>
+      
     </div>
+
+
     <div className='item-container'>
         <IngredientsList items={item}/>
     </div >
