@@ -6,14 +6,14 @@
     background-size: cover;
     background-position: center;
     display: flex;
-    justify-content: center;
+    
     flex-direction: column;
     align-items: center;
 
 }
 
 .title {
-    
+    margin-top: 4rem;
     text-align: center;
     color: white;
     
@@ -80,6 +80,7 @@
     outline: none;
     
     
+    
 }
 
 
@@ -102,6 +103,11 @@ p{
     font-weight: 200;
     font-size: medium;
     text-align: center;
+}
+
+
+.custom-label{
+    color: white;
 }
 
 

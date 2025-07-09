@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Register.css"
 import { CiLock } from "react-icons/ci";
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { Label } from '../UI/Label';
+import AuthContext from '../context/auth-context';
 
 const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail]=useState("");
   const [username, setUserName]=useState("");
+  const authCtx = useContext(AuthContext);
 
-  
+  const handleFormSubmit =() =>{
+      authCtx.login(false);
+  }
 
 
   return (
@@ -19,7 +23,7 @@ const Register = () => {
 
         <div className='form-container'>
           <h1 ><CiLock /></h1>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div>
               
               <Label
@@ -35,6 +39,7 @@ const Register = () => {
               placeholder='Enter name...'
               required
               className="custom-input"
+              
               />
             </div>
             <div>
