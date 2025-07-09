@@ -15,14 +15,14 @@ const Ingredients = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        alert(ingredients);
+        
         let obj = {
           ingredients,
           found:false,
         }
         
         if(ingredients in data){
-          console.log("present");
+          
           obj.found=true;
 
         }
@@ -75,7 +75,7 @@ const Ingredients = () => {
     </div>
 
 
-    <div className='item-container'>
+    <div className='item-card'>
         <IngredientsList items={item}/>
     </div >
     </React.Fragment>

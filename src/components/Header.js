@@ -24,12 +24,13 @@ window.addEventListener('scroll',()=>{
       
       <div className='logo'></div>
       <ul>
+      <li><Link to="/">Home</Link></li>
         <li><Link to="/food">Food</Link></li>
         
         <li><Link to="/drink">Drinks</Link></li>
         <li><Link to="/health-issues">Health Issue</Link></li>
         <li><Link to="/about">About</Link></li>
-        <li><Link to="/contact">Contact</Link></li>
+
       
       </ul>
       

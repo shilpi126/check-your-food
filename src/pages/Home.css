@@ -50,6 +50,7 @@
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
+    
 }
 
 
@@ -76,27 +77,110 @@
 .section-one .text-card{
     width: 45%;
     height: 100%;
-    background-color: rgb(122, 120, 123,0.2);
-
+    background-color: rgba(198, 194, 200, 0.2);
+     display: flex;
+    flex-direction: column;
+    align-items: center;
+     
 
 }
 
 .text-card h2{
+    font-size: xx-large;
     text-align: center;
-    color: rgb(3, 81, 3);
+     color: rgb(116, 4, 4);
+    font-weight: 500;
+    text-align: center;
+    width: 80%;
 }
 
 .text-card p{
-color: black;
-margin: 10px;
+  color: rgb(1, 20, 60);
+   font-size: large;
+   font-weight: 400;
+    text-align: justify;
+    /* text-align-last: center; */
+     width: 80%;
+      margin-top: -1rem;
 
 
 }
 
 
-.section-two{
+.text-section{
+    width: 100%;
+    height: 20rem;
+        background-color: rgba(198, 194, 200, 0.2);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    
+}
+
+.text-section h1{
+    color: rgb(1, 20, 60);
+    font-weight: 500;
+    text-align: center;
+    width: 30%;
 
 }
+
+.text-section p{
+    width: 90%;
+   color: rgb(1, 20, 60);
+   font-size: larger;
+   font-weight: 300;
+    text-align: justify;
+    text-align-last: center;
+    margin-top: -1rem;
+    
+    
+}
+
+.section-one .img-card-two{
+    width: 30%;
+    height: 100%;
+    background-color: rgba(198, 194, 200, 0.2);
+     border-radius: 5px;
+}
+
+
+.section-one .img-card-two img{
+    width: 90%;
+    height: 40%;
+    margin: 1rem;
+    border-radius: 5px;
+ 
+
+}
+
+
+
+.section-one .img-card-two p{
+    color: gray;
+    text-align: justify;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    margin-top: -0.5rem;
+ 
+
+}
+
+
+.section-one .img-card-two h1{
+    color: rgb(1, 20, 60);
+    font-weight: 400;
+    text-align: center;
+    font-size: large;
+    margin-bottom: -10px;
+    
+
+}
+
+
+
 
 
 
