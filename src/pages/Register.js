@@ -5,6 +5,7 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { Label } from '../UI/Label';
 import AuthContext from '../context/auth-context';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [password, setPassword] = useState("");
@@ -12,8 +13,21 @@ const Register = () => {
   const [username, setUserName]=useState("");
   const authCtx = useContext(AuthContext);
 
-  const handleFormSubmit =() =>{
-      authCtx.login(false);
+  const handleFormSubmit =(e) =>{
+      e.preventDefault()
+      const userData = {
+        username,
+        email,
+        password,
+
+      }
+
+
+      console.log(userData)
+
+      authCtx.register(userData);
+      
+
   }
 
 
@@ -82,7 +96,7 @@ const Register = () => {
             className='custom-button'
             text="Submit"
             />
-            <p>Already Have Account ? Login</p>
+            <p>Already Have Account ? <Link to="/login">Login</Link></p>
           </form>
         </div>
       

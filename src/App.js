@@ -9,21 +9,31 @@ import Home from './pages/Home';
 import {Navigate, Route,Routes} from "react-router-dom"
 import Footer from './components/Footer';
 import AuthContext from './context/auth-context';
+import Login from './pages/Login';
 
 
 function App() {
 const authCtx = useContext(AuthContext);
-console.log(authCtx.token);
+ const isLoggedIn = authCtx.token;
+
   return (
     
     <div>
-      {!authCtx.token &&  <Header/>}
-     
+    {isLoggedIn &&  <Header/>}
       <Routes>
-        {!authCtx.token && <Route path='/' element={<Home/>}/>}
-        
-        <Route path='/food' element={<Ingredients/>}/>
-        <Route path='/register' element={authCtx.token ? <Register/>  : <Navigate to="/" />}/>
+      
+      {isLoggedIn &&
+      <Route path='/' element={<Home/>}/>
+}
+
+{isLoggedIn &&
+      <Route path='/food' element={<Ingredients/>}/>
+}
+    
+      <Route path='/login' element={!isLoggedIn ? <Login/>  : <Navigate to="/" />}/>
+      {!isLoggedIn && <Route path='/register' element={<Register/>}/> }
+      
+
       </Routes>
         
     </div>

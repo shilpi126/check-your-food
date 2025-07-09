@@ -2,11 +2,11 @@ import React, { useContext, useState } from 'react'
 import "./Header.css"
 import logo from "../assets/food_logo.png"
 import { ImSwitch } from "react-icons/im";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth-context';
 
 const Header = () => {
- 
+ const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
 
 window.addEventListener('scroll',()=>{
@@ -16,15 +16,16 @@ window.addEventListener('scroll',()=>{
   if(scrollY > 200){
     heading.style.position = "sticky";
   }else{
-     heading.style.position = "absolute";
+    heading.style.position = "absolute";
   }
 
 })
 
 const handleCkick = () => {
-   
+  
+    authCtx.logout();
+    navigate("/login");
 
-    authCtx.login(true);
 }
 
   return (
@@ -44,7 +45,7 @@ const handleCkick = () => {
       </ul>
       
      
-      <button onClick={handleCkick}><Link to="/register"><ImSwitch size={20}/></Link></button>
+      <button onClick={handleCkick}><Link to="/logout"><ImSwitch size={20}/></Link></button>
       
     </nav>
     </React.Fragment>
