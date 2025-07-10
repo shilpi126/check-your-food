@@ -5,6 +5,13 @@ const AuthContext = createContext({
     login:(data)=>{},
     register:(data)=>{},
     logout:()=>{},
+    verifyEmail:(token)=>{},
+    confirmVerifyEmail:()=>{},
+    updateProfile:(data)=>{},
+    getUserProfileData:()=>{},
+    userData:{},
+    forgetPassword:(data)=>{},
+    resetPassword:(data)=>{}
 
 })
 

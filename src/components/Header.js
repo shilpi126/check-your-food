@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react'
 import "./Header.css"
+import { FaUser } from "react-icons/fa";
+import { FaRegUser } from "react-icons/fa";
 import logo from "../assets/food_logo.png"
 import { ImSwitch } from "react-icons/im";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth-context';
 
 const Header = () => {
- const navigate = useNavigate();
-  const authCtx = useContext(AuthContext);
+const navigate = useNavigate();
+const authCtx = useContext(AuthContext);
+
+
 
 window.addEventListener('scroll',()=>{
   const heading = document.querySelector(".heading");
@@ -21,10 +25,18 @@ window.addEventListener('scroll',()=>{
 
 })
 
+
+
 const handleCkick = () => {
   
     authCtx.logout();
     navigate("/login");
+
+}
+
+
+const openProfile = () => {
+  
 
 }
 
@@ -40,14 +52,13 @@ const handleCkick = () => {
         <li><Link to="/drink">Drinks</Link></li>
         <li><Link to="/health-issues">Health Issue</Link></li>
         <li><Link to="/about">About</Link></li>
-
-      
+        
       </ul>
-      
-     
-      <button onClick={handleCkick}><Link to="/logout"><ImSwitch size={20}/></Link></button>
-      
-    </nav>
+      <div className='btn'>    
+      <button className='profile' onClick={openProfile}><Link to="/user-profile"><FaUser size={18}/></Link></button>
+      <button className='logout'  onClick={handleCkick}><Link to="/logout"><ImSwitch size={20}/></Link></button>
+      </div>
+      </nav>
     </React.Fragment>
   )
   
