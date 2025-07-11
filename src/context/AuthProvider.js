@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AuthContext from "./auth-context";
 import axios from "axios";
+import { useNavigate } from 'react-router';
 
 const api = process.env.REACT_APP_AUTH_API_KEY;
 
@@ -8,10 +9,7 @@ const api = process.env.REACT_APP_AUTH_API_KEY;
 function AuthProvider(props) {
 const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")));
 const [token,setToken]= useState(localStorage.getItem("token"));
-
-
-
-
+const navigate = useNavigate();
 
 const register = async(data) => {
   //console.log(data)
@@ -37,8 +35,6 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 
 }
 
-
-
 const logout = () =>{
   localStorage.removeItem("token");
   setToken("");
@@ -61,7 +57,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 
  setToken(userToken)
   localStorage.setItem("token",userToken)
- console.log(userToken);
+ 
   
 }catch(err){
     console.log(err);
@@ -107,7 +103,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
   
 
 });
- const user = res.data.users;
+ const user = res?.data?.users;
  console.log(user[0]);
  setUserData(user[0]);
  localStorage.setItem("userData",JSON.stringify(user[0]))
@@ -130,12 +126,13 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
           requestType:"PASSWORD_RESET",
           email:data.email,
         }
-
+  
     )
 
     const response = res.data;
-
+    
     console.log(response);
+    navigate("/reset-password");
       
     }catch(err){
         console.log(err);
@@ -143,18 +140,21 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
     }
 
 
-const resetPassword = async() =>{
+const resetPassword = async(data) =>{
     
     try{
-const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=${api}`,{
-    oobCode: "",
+    const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:resetPassword?key=${api}`,{
+    oobCode: data.oobCode,
+    newPassword:data.password,
 
-});
+}
+
+);
 
  const response = res.data;
 
  console.log(response);
-  
+  navigate("/login")
 }catch(err){
     console.log(err);
 }

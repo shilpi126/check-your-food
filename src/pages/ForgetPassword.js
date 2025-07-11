@@ -6,7 +6,7 @@ import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { Label } from '../UI/Label';
 import AuthContext from '../context/auth-context';
-import { Link } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 
 const ForgetPassword = () => {
  
@@ -14,39 +14,21 @@ const ForgetPassword = () => {
   
   const authCtx = useContext(AuthContext);
 
+
+
   const handleFormSubmit =(e) =>{
       e.preventDefault()
       const userData = {
-        
         email,
         
-
       }
-      
-      //console.log(userData)
       
       authCtx.forgetPassword(userData);
       
-      
 
   }
 
 
-    const handleClick =(e) =>{
-      e.preventDefault()
-      const userData = {
-        
-        email,
-        
-      }
-      
-
-      
-      authCtx.resetPassword();
-      
-      
-
-  }
 
 
   return (
@@ -56,7 +38,7 @@ const ForgetPassword = () => {
         <div className='form-container'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
-           
+            
             <div>
               
               <Label
@@ -84,12 +66,7 @@ const ForgetPassword = () => {
             />
             <p className='p-link-text'>Remember Password ? <Link to="/login">Login</Link></p>
           </form>
-            <Button 
-            type='submit'
-            className='custom-button'
-            text="Reset"
-            onClick={handleClick}
-            />
+           
         </div>
       
     </div>

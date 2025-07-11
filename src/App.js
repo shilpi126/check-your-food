@@ -14,6 +14,10 @@ import Login from './pages/Login';
 import Profile from './pages/profile/Profile';
 import ForgetPassword from './pages/ForgetPassword';
 
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+import ResetPassword from './pages/ResetPassword';
+
 
 function App() {
 const authCtx = useContext(AuthContext);
@@ -34,41 +38,21 @@ const authCtx = useContext(AuthContext);
 
   return (
     
-    <div>
+    <React.Fragment>
     {isLoggedIn &&  <Header/>}
       <Routes>
+      <Route path='/' element={<PrivateRoute><Home/></PrivateRoute> } />
+      <Route path='/food' element={<PrivateRoute><Ingredients/></PrivateRoute>}/>
+      <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
+      <Route path='/login' element={<PublicRoute><Login/></PublicRoute>  }/>
+      <Route path='/forget-password' element={<PublicRoute><ForgetPassword/></PublicRoute>}/>
+      <Route path='/reset-password' element={<PublicRoute><ResetPassword/></PublicRoute>}/>
+      <Route path='/register' element={<PublicRoute><Register/></PublicRoute>}/> 
       
-      {isLoggedIn &&
-      <Route path='/' element={<Home/>}/>
-}
-
-
-      {isLoggedIn &&
-      <Route path='/user-profile' element={<Profile user={user}/>}/>
-}
-
-
-
-      {!isLoggedIn &&
-      <Route path='/forget-password' element={<ForgetPassword/>}/>
-}
-      
-
-
-
-{isLoggedIn &&
-      <Route path='/food' element={<Ingredients/>}/>
-}
-    
-      <Route path='/login' element={!isLoggedIn ? <Login/>  : <Navigate to="/" />}/>
-      {!isLoggedIn && <Route path='/register' element={<Register/>}/> }
-      
-
       </Routes>
-        
-    </div>
-    
-  );
+      </React.Fragment>
+
+      );
 }
 
 export default App;
