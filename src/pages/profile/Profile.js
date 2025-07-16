@@ -15,7 +15,7 @@ const Profile = (props) => {
 
   const profileData = props.user;
 
-
+console.log(profileData)
 
   
 
@@ -24,12 +24,11 @@ const Profile = (props) => {
       const userData = {
         username,
         imageUrl,
-        
-
       }
 
       authCtx.updateProfile(userData);
-      
+      setImageUrl("")
+      setUserName("")
 
   }
 
@@ -41,12 +40,23 @@ const Profile = (props) => {
 <div className='form-containerr'>
    <div className='profile-card'>
 
-{!profileData && <img src="https://www.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?w=196&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"  className='profile-pic'/>}
-{!profileData && <p className='profile-email'>"updated profile"</p>}
+    {!profileData && <div><img src="https://www.bing.com/th/id/OIP.7O4_GREtLbxqPdJCTmfatQHaHa?w=196&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"  className='profile-pic' alt='profile-image'/>
+    <p className='profile-email'>updated profile</p>
+    </div>
+
+    }
           
 
-  {profileData && <img src={profileData.photoUrl} className='profile-pic'/>}
-{profileData && <p className='profile-email'>Email : {profileData.email ? profileData.email :"updated profile"}</p>}
+      {profileData && <div>
+      <img src={profileData.photoUrl} className='profile-pic' alt='profile-image'/>
+        <p className='profile-email'>Name : {profileData?.displayName}</p>
+        <p className='profile-email'>Email : {profileData?.email}</p>
+    </div>
+    }
+
+
+
+
           
    </div>
         </div>

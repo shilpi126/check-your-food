@@ -11,7 +11,7 @@ const Header = () => {
 const navigate = useNavigate();
 const authCtx = useContext(AuthContext);
 
-
+const user = authCtx.userData;
 
 window.addEventListener('scroll',()=>{
   const heading = document.querySelector(".heading");
@@ -35,10 +35,7 @@ const handleCkick = () => {
 }
 
 
-const openProfile = () => {
-  
 
-}
 
   return (
     <React.Fragment>
@@ -55,7 +52,7 @@ const openProfile = () => {
         
       </ul>
       <div className='btn'>    
-      <button className='profile' onClick={openProfile}><Link to="/user-profile"><FaUser size={18}/></Link></button>
+      <button className='profile' ><Link to="/user-profile"><FaUser size={18}/></Link></button>
       <button className='logout'  onClick={handleCkick}><Link to="/logout"><ImSwitch size={20}/></Link></button>
       </div>
       </nav>

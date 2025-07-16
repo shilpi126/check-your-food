@@ -37,7 +37,7 @@ const ResetPassword = () => {
   return (
     <div  className='bg-box'>
       <h2 className='title'>Reset Password Form</h2>
-
+      <p className='reset-msg'>Enter url that sent to user's email for reset password.</p>
         <div className='form-container'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>

@@ -95,14 +95,16 @@
 .text-card p{
   color: rgb(1, 20, 60);
    font-size: large;
-   font-weight: 400;
+   font-weight: 300;
     text-align: justify;
     /* text-align-last: center; */
      width: 80%;
       margin-top: -1rem;
+    
 
 
 }
+
 
 
 .text-section{

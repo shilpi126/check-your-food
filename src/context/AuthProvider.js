@@ -74,16 +74,22 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
   displayName:data.username,
   photoUrl:data.imageUrl,
   idToken:token,
-  deleteAttribute:"DISPLAY_NAME",
+
   returnSecureToken:true,
 
 });
  const user = res.data;
+ console.log(user)
+
+ if(user){
  const obj={
-    displayName:data.username,
-  photoUrl:data.imageUrl,
+    displayName:user.displayName,
+  photoUrl:user.photoUrl,
+  email:user.email
  }
  setUserData(obj);
+ }
+
 
 
   
@@ -103,11 +109,17 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
   
 
 });
- const user = res?.data?.users;
- console.log(user[0]);
- setUserData(user[0]);
- localStorage.setItem("userData",JSON.stringify(user[0]))
+
+
+ const users = res?.data?.users;
+ if(users && users.length > 0){
+  const user = users[0];
+ console.log(user);
+ setUserData(user);
+ localStorage.setItem("userData",JSON.stringify(user))
   
+ }
+
   
 }catch(err){
     console.log(err);
@@ -116,10 +128,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 }
 
 
-
-
-
-    const forgetPassword = async(data) =>{
+  const forgetPassword = async(data) =>{
         
         try{
     const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${api}`,{
@@ -137,7 +146,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
     }catch(err){
         console.log(err);
     }
-    }
+  }
 
 
 const resetPassword = async(data) =>{

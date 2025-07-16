@@ -11,22 +11,16 @@ const Ingredients = () => {
     const [ingredients, setIngredients] = useState("");
     const [item,setItem]=useState([]);
     
+
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-
         
         let obj = {
           ingredients,
-          found:false,
+          found:data.includes(ingredients),
         }
         
-        if(ingredients in data){
-          
-          obj.found=true;
-
-        }
-
         
         setItem((prev) => [...item, obj]);
         setIngredients("");
