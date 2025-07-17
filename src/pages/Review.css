@@ -10,15 +10,15 @@
 
 .review-product{
     
-    margin-top: 3rem;
+    margin-top: 4rem;
     padding-top: 1rem;
-    width: 30%;
+    width: 25%;
     background-color: rgb(214, 226, 228,0.2);
 }
 
 .total-review-box{
-    margin-top: 3rem;
-    width: 50%;
+    margin-top: 4rem;
+    width: 65%;
     padding-top: 1rem;
     background-color: rgb(214, 226, 228,0.2);
 }
@@ -86,7 +86,7 @@
     background-color: transparent;
     border: none;
     font-size: larger;
-   
+    
 }
 
 .star{
@@ -105,5 +105,16 @@
 .product-name{
     font-weight: 400;
     cursor: pointer;
-    padding-left: 2rem;
+    height: 2rem;
+    width: 100%;
+    padding-left: 0.5rem;
+    
+}
+
+.dot{
+   display: flex ;
+   align-items: center;
+   padding-left: 1rem;
+   margin-bottom: -20px;
+   
 }

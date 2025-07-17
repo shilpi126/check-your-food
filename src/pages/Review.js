@@ -1,54 +1,37 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./Review.css"
 import { IoIosAddCircle } from "react-icons/io";
-import { FaEdit } from "react-icons/fa";
+import { FaPlateWheat } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
-import { FaRegStar } from "react-icons/fa";
-import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
-import ReviewForm from '../components/ReviewForm';
 import ReviewModal from '../UI/ReviewModal';
 import ReviewContext from '../context/review-context';
 
- const reviews=[
-    {
-      id: 1,
-      productName: 'Maggi Noodles',
-      reviewText: 'Tastes good but has too much oil.',
-      image: 'https://wallpaperaccess.com/full/767054.jpg',
-      rating: 3,
-    },
-    {
-      id: 2,
-      productName: 'Lay’s Chips',
-      reviewText: 'Too salty, not very healthy.',
-      image: 'https://th.bing.com/th/id/OIP.jJI3bTJ-diLfKDHb9-vwmwHaE8?w=312&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
-      rating: 2,
-    }
-  ];
+
 
 const Review = () => {
   const reviewCtx = useContext(ReviewContext)
-   const reviewData = reviewCtx.reviewData;
+
+    const data = reviewCtx.reviewData;
+    const [reviewData,setReviewData] =useState(data);
     const[reviewForm,setReviewForm]=useState(false)
-    const [activeReview, setActiveReview] = useState([reviewData[0]])
+    const initialData = reviewData && reviewData[0];
+    const [activeReview, setActiveReview] = useState([initialData])
     
    console.log(reviewData)
 
-    useEffect(()=>{
-      reviewCtx.readReview()
-    },[])
-
-
+ 
 
   const handleClick = (productName) => {
 
-   const productReview = reviewData.filter((item)=>item.productName === productName)
-   
+   const productReview = reviewData?.filter((item)=>item.productName.toLowerCase() === productName.toLowerCase())
    setActiveReview(productReview)
 
   }
+
+
+  
 
 
   const openReviewForm=()=>{
@@ -61,19 +44,26 @@ const Review = () => {
   return (
     <div className='review-box'>
         
-        <div className='review-product'>
+       {!reviewForm &&  
+       <div className='review-product' >
            {reviewData?.map((review,index)=>(
-             <h3 className='product-name' onClick={()=>handleClick(review.productName)}>{review.productName}</h3>
+      <div className='dot'>
+                    <FaPlateWheat  size={20}/>
+                  <h3 key={review.id} className='product-name' onClick={()=>handleClick(review.productName)}>{review.productName }</h3>
+     
+     
+      </div>
            ))}
             
 
         </div>
-         {reviewForm && <ReviewModal/>}
+        }
+        {reviewForm && <ReviewModal/>}
         {!reviewForm &&  <div className='total-review-box'>
-            <div className='total-review-card'><p>Total reviews : {reviews.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
+            <div className='total-review-card'><p>Total reviews : {reviewData.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
             <div className='user-review-card'>
             
-                {activeReview?.map((review,index)=>(
+                {activeReview && activeReview?.map((review,index)=>(
                     <div className='card'>
                     <div className='user-review'>
                     <p>{review?.productName}</p>
@@ -84,7 +74,7 @@ const Review = () => {
                     <FaStar 
                     className='star' 
                     size={20} 
-                    color={star <= reviews?.rating ? "#fb940c" : "gray"}
+                    color={star <= review?.rating ? "#fb940c" : "gray"}
 
                     />
                     )

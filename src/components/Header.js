@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext} from 'react'
 import "./Header.css"
 import { FaUser } from "react-icons/fa";
-import { FaRegUser } from "react-icons/fa";
-import logo from "../assets/food_logo.png"
+
 import { ImSwitch } from "react-icons/im";
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/auth-context';
@@ -11,13 +10,13 @@ const Header = () => {
 const navigate = useNavigate();
 const authCtx = useContext(AuthContext);
 
-const user = authCtx.userData;
+
 
 window.addEventListener('scroll',()=>{
   const heading = document.querySelector(".heading");
   const scrollY = window.scrollY;
 
-  if(scrollY > 200){
+  if(scrollY > 100){
     heading.style.position = "sticky";
   }else{
     heading.style.position = "absolute";

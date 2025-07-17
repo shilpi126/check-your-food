@@ -10,6 +10,7 @@ function AuthProvider(props) {
 const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userData")));
 const [token,setToken]= useState(localStorage.getItem("token"));
 const navigate = useNavigate();
+const [uid,setUid] =useState(localStorage.getItem("uid"))
 
 const register = async(data) => {
   //console.log(data)
@@ -38,6 +39,8 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 const logout = () =>{
   localStorage.removeItem("token");
   setToken("");
+  setUid("")
+  localStorage.removeItem("uid")
   localStorage.removeItem("userData");
   setUserData(null)
 }
@@ -54,11 +57,13 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 
 });
  const userToken = res.data.idToken;
+ const uid = res.data.localId;
 
- setToken(userToken)
+  setToken(userToken)
   localStorage.setItem("token",userToken)
- 
-  
+  localStorage.setItem("uid",uid)
+  setUid(uid)
+
 }catch(err){
     console.log(err);
 }

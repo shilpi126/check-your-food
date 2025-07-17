@@ -4,15 +4,14 @@ import { CiLock } from "react-icons/ci";
 import Input from '../UI/Input';
 import Button from '../UI/Button';
 import { Label } from '../UI/Label';
-import AuthContext from '../context/auth-context';
-import { Link } from 'react-router-dom';
+
 import ReviewContext from '../context/review-context';
 
 const ReviewForm = () => {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText]=useState("");
   const [productName, setProductName]=useState("");
-  const [photo, setPhoto]=useState()
+  const [photo, setPhoto]=useState("")
   const reviewCtx = useContext(ReviewContext);
 
   const handleFormSubmit =(e) =>{
@@ -25,7 +24,6 @@ const ReviewForm = () => {
 
       }
       console.log(productData)
-
       reviewCtx.createReview(productData);
       
 
@@ -85,16 +83,10 @@ const ReviewForm = () => {
               className="custom-label"
               />
               <Input
-              type='file'
+              type='url'
               id='photo'
-              accept="image/*"
-              onChange={(e)=>{
-                const file=e.target.files?.[0]
-                if(file){
-                  const url = URL.createObjectURL(file)
-                setPhoto(url)
-                }
-                }}
+              onChange={(e)=>setPhoto(e.target.value)}
+              
               placeholder='Enter photo...'
               required
               className="custom-input"

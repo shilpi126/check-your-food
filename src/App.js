@@ -13,18 +13,25 @@ import PublicRoute from './components/PublicRoute';
 import ResetPassword from './pages/ResetPassword';
 import HealthIssue from './pages/HealthIssue';
 import Review from './pages/Review';
+import ReviewContext from './context/review-context';
 
 
 function App() {
-const authCtx = useContext(AuthContext);
+   const reviewCtx = useContext(ReviewContext)
+  
+  const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.token;
   const user= authCtx.userData;
-
 
 
   useEffect(()=>{
     authCtx.getUserProfileData();
   },[])
+
+
+  useEffect(()=>{
+      reviewCtx.readReview()
+    },[])
 
 
 

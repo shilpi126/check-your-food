@@ -1,24 +1,33 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ReviewContext from './review-context'
 import axios from 'axios';
-const api_key = "https://smart-foodie-app-default-rtdb.firebaseio.com/review.json"
+
+const api_key = "https://smart-foodie-app-default-rtdb.firebaseio.com"
+const uid =localStorage.getItem("uid")
+// console.log(uid)
 
 const ReviewProvider = ({children}) => {
+
 const [reviewData,setReviewData]= useState([]);
 
+
     const createReview  = async(data) =>{
-          
     try{
-    const res = await axios.post(`${api_key}`,data
+    const res = await axios.post(`${api_key}/review/.json`,{
+      ...data, 
+      user:uid,
+    }
     );
     const response = res.data.name;
-    //console.log(response);
+    // console.log(response);
     const product ={
       id:response,
       image:data.photo,
       review:data.review,
       reviewText:data.reviewText,
       productName:data.productName,
+      user:uid,
+      
       
     }
 
@@ -35,8 +44,9 @@ const [reviewData,setReviewData]= useState([]);
 
     const readReview  = async() => {
     try{
-        const res = await axios.get(api_key);
+        const res = await axios.get(`${api_key}/review.json`);
         const response = res.data;
+        console.log(response)
         const data=[]
         
         for(let key in response){
@@ -47,11 +57,12 @@ const [reviewData,setReviewData]= useState([]);
                 reviewText:response[key].reviewText,
                 rating:response[key].rating,
                 productName:response[key].productName,
+                user:response[key].user,
           }
 
           data.push(product)
             
-            // console.log(product);
+            console.log(product);
         }
 
         setReviewData(data)
