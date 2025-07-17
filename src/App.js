@@ -12,6 +12,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import ResetPassword from './pages/ResetPassword';
 import HealthIssue from './pages/HealthIssue';
+import Review from './pages/Review';
 
 
 function App() {
@@ -35,8 +36,12 @@ const authCtx = useContext(AuthContext);
       <Routes>
       <Route path='/' element={<PrivateRoute><Home/></PrivateRoute> } />
       <Route path='/food' element={<PrivateRoute><Ingredients/></PrivateRoute>}/>
+      <Route path='/review' element={<PrivateRoute><Review/></PrivateRoute>}/>
       <Route path='/health-issues' element={<PrivateRoute><HealthIssue/></PrivateRoute>}/>
       <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
+
+
+      
       <Route path='/login' element={<PublicRoute><Login/></PublicRoute>  }/>
       <Route path='/forget-password' element={<PublicRoute><ForgetPassword/></PublicRoute>}/>
       <Route path='/reset-password' element={<PublicRoute><ResetPassword/></PublicRoute>}/>

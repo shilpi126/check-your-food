@@ -11,7 +11,7 @@ import { RiProhibited2Line } from "react-icons/ri";
 const IngredientsList = (props) => {
   const [result,setResult] = useState({})
   const [active, setActive] = useState(false);
-  // const [num,setNum] =useState(0);
+  
   let list = props.items;
 
   const info = [
@@ -70,13 +70,12 @@ const IngredientsList = (props) => {
     }else{
       setResult(info[2]);
     }
-
-
-    
   }
 
   const handleClose = () => {setActive(false)}
+   
 
+  console.log(active)
   
   return (
     <React.Fragment>

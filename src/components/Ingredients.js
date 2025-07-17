@@ -24,6 +24,8 @@ const Ingredients = () => {
         
         setItem((prev) => [...item, obj]);
         setIngredients("");
+
+        
   
     }
 
