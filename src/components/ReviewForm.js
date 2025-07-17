@@ -6,51 +6,55 @@ import Button from '../UI/Button';
 import { Label } from '../UI/Label';
 import AuthContext from '../context/auth-context';
 import { Link } from 'react-router-dom';
+import ReviewContext from '../context/review-context';
 
 const ReviewForm = () => {
-  const [password, setPassword] = useState("");
-  const [email, setEmail]=useState("");
-  const [username, setUserName]=useState("");
-  const authCtx = useContext(AuthContext);
+  const [rating, setRating] = useState(0);
+  const [reviewText, setReviewText]=useState("");
+  const [productName, setProductName]=useState("");
+  const [photo, setPhoto]=useState()
+  const reviewCtx = useContext(ReviewContext);
 
   const handleFormSubmit =(e) =>{
       e.preventDefault()
-      const userData = {
-        username,
-        email,
-        password,
+      const productData = {
+        reviewText,
+        rating,
+        productName,
+        photo
 
       }
+      console.log(productData)
 
-
-      console.log(userData)
-
-      authCtx.register(userData);
+      reviewCtx.createReview(productData);
       
 
   }
 
 
-  return (
-    <div  className='bg-box'>
-      <h2 className='title'>ReviewForm Form</h2>
+  
 
-        <div className='form-container'>
-          <h1 ><CiLock /></h1>
+  return (
+    <div  className='review-bg-box'>
+      <h2 className='review-title'>Review Form</h2>
+
+        <div className='review-form-container'>
+          <h1 >< CiLock/></h1>
+
           <form onSubmit={handleFormSubmit}>
             <div>
               
               <Label
-              htmlFor="username"
-              text="Username :"
+              htmlFor="productName"
+              text="Product Name :"
               className="custom-label"
               />
                 <Input
               type='text'
-              id='username'
-              value={username}
-              onChange={(e)=>{setUserName(e.target.value)}}
-              placeholder='Enter name...'
+              id='productName'
+              value={productName}
+              onChange={(e)=>{setProductName(e.target.value)}}
+              placeholder='Enter Product Name...'
               required
               className="custom-input"
               
@@ -59,16 +63,16 @@ const ReviewForm = () => {
             <div>
               
               <Label
-              htmlFor="email"
-              text="Email :"
+              htmlFor="reviewText"
+              text="Review :"
               className="custom-label"
               />
                 <Input
-              type='email'
-              id='email'
-              value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
-              placeholder='Enter Email...'
+              type='reviewText'
+              id='reviewText'
+              value={reviewText}
+              onChange={(e)=>{setReviewText(e.target.value)}}
+              placeholder='Enter Review...'
               required
               className="custom-input"
               />
@@ -76,19 +80,47 @@ const ReviewForm = () => {
             <div>
               
               <Label
-              htmlFor="password"
-              text="Password :"
+              htmlFor="photo"
+              text="Photo :"
               className="custom-label"
               />
               <Input
-              type='password'
-              id='password'
-              value={password}
-              onChange={(e)=>{setPassword(e.target.value)}}
-              placeholder='Enter password...'
+              type='file'
+              id='photo'
+              accept="image/*"
+              onChange={(e)=>{
+                const file=e.target.files?.[0]
+                if(file){
+                  const url = URL.createObjectURL(file)
+                setPhoto(url)
+                }
+                }}
+              placeholder='Enter photo...'
               required
               className="custom-input"
               />
+            </div>
+
+                <div>
+              
+              <Label
+              htmlFor="rating"
+              text="Review :"
+              className="custom-label"
+              />
+              <select 
+              id='rating'
+              value={rating}
+              onChange={(e)=>setRating(e.target.value)}
+              className='custom-input'
+              >
+                <option value="">Select Rating</option>
+                <option value="1">1 </option>
+                <option value="2">2 </option>
+                <option value="3">3 </option>
+                <option value="4">4 </option>
+                <option value="5">5 </option>
+              </select>
             </div>
 
             <Button 
@@ -96,7 +128,7 @@ const ReviewForm = () => {
             className='custom-button'
             text="Submit"
             />
-            <p>Already Have Account ? <Link to="/login">Login</Link></p>
+
           </form>
         </div>
       

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./Review.css"
 import { IoIosAddCircle } from "react-icons/io";
 import { FaEdit } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { FaRegStar } from "react-icons/fa";
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa";
 import ReviewForm from '../components/ReviewForm';
+import ReviewModal from '../UI/ReviewModal';
+import ReviewContext from '../context/review-context';
 
  const reviews=[
     {
@@ -27,14 +29,22 @@ import ReviewForm from '../components/ReviewForm';
   ];
 
 const Review = () => {
-     const[reviewForm,setReviewForm]=useState(false)
-    const [activeReview, setActiveReview] = useState([reviews[0]])
+  const reviewCtx = useContext(ReviewContext)
+   const reviewData = reviewCtx.reviewData;
+    const[reviewForm,setReviewForm]=useState(false)
+    const [activeReview, setActiveReview] = useState([reviewData[0]])
+    
+   console.log(reviewData)
 
- 
+    useEffect(()=>{
+      reviewCtx.readReview()
+    },[])
+
+
 
   const handleClick = (productName) => {
 
-   const productReview = reviews.filter((item)=>item.productName === productName)
+   const productReview = reviewData.filter((item)=>item.productName === productName)
    
    setActiveReview(productReview)
 
@@ -50,31 +60,31 @@ const Review = () => {
 
   return (
     <div className='review-box'>
-       
+        
         <div className='review-product'>
-           {reviews.map((review,index)=>(
+           {reviewData?.map((review,index)=>(
              <h3 className='product-name' onClick={()=>handleClick(review.productName)}>{review.productName}</h3>
            ))}
             
 
         </div>
-         {reviewForm && <ReviewForm/>}
+         {reviewForm && <ReviewModal/>}
         {!reviewForm &&  <div className='total-review-box'>
             <div className='total-review-card'><p>Total reviews : {reviews.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
             <div className='user-review-card'>
             
-                {activeReview.map((reviews,index)=>(
+                {activeReview?.map((review,index)=>(
                     <div className='card'>
                     <div className='user-review'>
-                    <p>{reviews.productName}</p>
-                    <img src={reviews.image} className='review-img' alt='review image'/>
-                    <p>{reviews.reviewText}</p>
+                    <p>{review?.productName}</p>
+                    <img src={review?.image} className='review-img' alt='review image'/>
+                    <p>{review?.reviewText}</p>
                     <div className='review-star'>
                     {[1,2,3,4,5].map((star)=>(
                     <FaStar 
                     className='star' 
                     size={20} 
-                    color={star <= reviews.rating ? "#fb940c" : "gray"}
+                    color={star <= reviews?.rating ? "#fb940c" : "gray"}
 
                     />
                     )

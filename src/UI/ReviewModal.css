@@ -1,0 +1,56 @@
+
+
+.review-modal-bg{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background-color:rgb(10, 10, 10,0.2);
+}
+
+.review-modal-card{
+    position: fixed;
+    top: 20vh;
+    left: 30%;
+    height: 21rem;
+    width: 30rem;
+    background-color: rgb(0, 0, 26);
+    padding: 20px;
+    z-index: 100;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+
+
+.review-modal-btn{
+    height: 2rem;
+    width: 30px;
+    margin-top: -19rem;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
