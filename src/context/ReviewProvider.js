@@ -11,12 +11,17 @@ const ReviewProvider = ({children}) => {
    const [loading,setLoading]=useState(true)
    const[uniqueTitles,setUniqueTitles] = useState([])
 const [reviewData,setReviewData]= useState([]);
-
+const [historyData, setHistoryData] = useState([])
     const [activeReview, setActiveReview] = useState([initialData[0]])
 
     useEffect(()=>{
       readReview()
     },[])
+
+       useEffect(()=>{
+      getHistoryData()
+    },[])
+
 
 
 
@@ -145,6 +150,67 @@ const deleteReview  = async(id) =>{
 
 
 
+  const createHistory  = async(data) =>{
+
+      console.log(data)
+    try{
+    const res = await axios.post(`${api_key}/history/.json`,{
+      ...data, 
+      
+    }
+    );
+    const response = res.data.name;
+    console.log(response);
+    const product ={
+      id:response,
+      list:data.list,
+      result:data.result,
+      
+      user:data.user,
+      
+      
+    }
+
+    setHistoryData((prev)=>[...prev, product])
+      
+    }catch(err){
+        console.log(err);
+    }
+
+    }
+
+    console.log(historyData)
+
+      const getHistoryData  = async() => {
+    try{
+        const res = await axios.get(`${api_key}/history.json`);
+        const response = res.data;
+        console.log(response)
+        const data=[]
+        
+        for(let key in response){
+          console.log(key)
+        const product ={
+      id:key,
+      list:response[key].list,
+      result:response[key].res,
+      
+      user:response[key].user,
+      
+      
+        }
+
+          data.push(product)
+          console.log(product);
+        }
+      setHistoryData(data)
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    console.log(historyData)
+
     const reviewValue = {
     reviewData,
     createReview,
@@ -155,6 +221,9 @@ const deleteReview  = async(id) =>{
     uniqueTitles,
     activeReview,
     filterProductReview,
+    createHistory,
+    historyData,
+    getHistoryData,
     }
 
   return (

@@ -45,8 +45,8 @@ const handleCkick = () => {
       <li><Link to="/">Home</Link></li>
         <li><Link to="/food">Food</Link></li>
         
-        <li><Link to="/drink">Drinks</Link></li>
-        <li><Link to="/health-issues">Health Issue</Link></li>
+        <li><Link to="/history">History</Link></li>
+        {/* <li><Link to="/health-issues">Health Issue</Link></li> */}
         <li><Link to="/review">Review</Link></li>
         
       </ul>

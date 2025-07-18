@@ -11,7 +11,7 @@ import ForgetPassword from './pages/ForgetPassword';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import ResetPassword from './pages/ResetPassword';
-import HealthIssue from './pages/HealthIssue';
+import History from "./pages/History"
 import Review from './pages/Review';
 
 
@@ -39,7 +39,7 @@ function App() {
       <Route path='/' element={<PrivateRoute><Home/></PrivateRoute> } />
       <Route path='/food' element={<PrivateRoute><Ingredients/></PrivateRoute>}/>
       <Route path='/review' element={<PrivateRoute><Review/></PrivateRoute>}/>
-      <Route path='/health-issues' element={<PrivateRoute><HealthIssue/></PrivateRoute>}/>
+      <Route path='/history' element={<PrivateRoute><History/></PrivateRoute>}/>
       <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
 
 

@@ -12,6 +12,9 @@ const ReviewContext = createContext({
     
     filterProductReview:(productName)=>{},
     activeReview:[],
+    createHistory:(data)=>{},
+    historyData:[],
+    getHistoryData:()=>{},
 })
 
 

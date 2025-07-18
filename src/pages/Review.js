@@ -84,7 +84,7 @@ const handleDelete = (id) =>{
                    <>
                     <div className='user-info'>
                           <img src={review.user.image}/>
-                          <p>{review.user.name}</p>
+                          <p>{review.user?.name ? review.user?.name : "user name"}</p>
                       </div>
                       <div className='card' key={review?.id}>
                         
