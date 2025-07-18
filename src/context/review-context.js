@@ -1,4 +1,4 @@
-import {createContext} from "react"
+import {act, createContext} from "react"
 
 
 const ReviewContext = createContext({
@@ -6,7 +6,12 @@ const ReviewContext = createContext({
     readReview:()=>{},
     deleteReview:(id)=>{},
     updateReview:(id)=>{},
-    reviewData:[,]
+    reviewData:[],
+    uniqueTitles:[],
+    loading:true,
+    
+    filterProductReview:(productName)=>{},
+    activeReview:[],
 })
 
 

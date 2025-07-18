@@ -6,21 +6,37 @@ import Button from '../UI/Button';
 import { Label } from '../UI/Label';
 
 import ReviewContext from '../context/review-context';
+import AuthContext from '../context/auth-context';
 
 const ReviewForm = () => {
+
+  const authCtx = useContext(AuthContext)
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText]=useState("");
   const [productName, setProductName]=useState("");
   const [photo, setPhoto]=useState("")
   const reviewCtx = useContext(ReviewContext);
+  const userData = authCtx.userData;
+
+  const user ={
+    name:userData.displayName,
+    email:userData.email,
+    image:userData.photoUrl,
+    uid:userData.localId,
+  }
+
+  console.log(user)
 
   const handleFormSubmit =(e) =>{
       e.preventDefault()
+      console.log(rating)
       const productData = {
         reviewText,
         rating,
         productName,
-        photo
+        photo,
+        user,
+
 
       }
       console.log(productData)

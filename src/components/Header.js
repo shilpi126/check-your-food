@@ -16,7 +16,7 @@ window.addEventListener('scroll',()=>{
   const heading = document.querySelector(".heading");
   const scrollY = window.scrollY;
 
-  if(scrollY > 100){
+  if(scrollY > 200){
     heading.style.position = "sticky";
   }else{
     heading.style.position = "absolute";

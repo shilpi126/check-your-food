@@ -10,14 +10,14 @@
 
 .review-product{
     
-    margin-top: 4rem;
+    
     padding-top: 1rem;
     width: 25%;
     background-color: rgb(214, 226, 228,0.2);
 }
 
 .total-review-box{
-    margin-top: 4rem;
+    
     width: 65%;
     padding-top: 1rem;
     background-color: rgb(214, 226, 228,0.2);
@@ -25,13 +25,18 @@
 
 .total-review-card{
     height: 3rem;
+    width: 100%;
+    background-color: orange;
     display: flex;
+    margin-top: 4rem;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid gray;
 }
 
 .total-review-card p{
     color: black;
+    font-weight: 500;
     padding-left: 1rem;
 }
 
@@ -44,6 +49,7 @@
 
 
 .user-review-card{
+   
     
     width: 100%;
     display: flex;
@@ -54,8 +60,10 @@
 }
 
 .user-review {
+    height: 15rem;
     width: 85%;
     color: black;
+    margin-top: -10px;
     padding-left: 1rem;
     padding-right: 1rem;
 
@@ -64,12 +72,15 @@
 .user-review p{
     color: black;
     text-align:justify;
+    padding-top: 10px;
     
 }
 
 .review-img{
     width: 200px;
     height: 100px;
+    margin-top: -10px;
+    margin-bottom: -20px;
 }
 
 .review-btn-box {
@@ -79,6 +90,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 2rem;
+    
 }
 
 .review-btn-box button{
@@ -89,16 +101,18 @@
     
 }
 
+
+
 .star{
     color: #fb940c;
-    
+    margin-top: -20px;
 }
 
 .card{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
+    margin-top: -10px;
     border-bottom: 1px solid rgb(149, 148, 148);
 }
 
@@ -117,4 +131,42 @@
    padding-left: 1rem;
    margin-bottom: -20px;
    
+}
+
+
+.spin{
+    width: 100%;
+    margin-top: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info{
+    height: 2.5rem;
+    width: 100%;
+    
+    border-bottom:1px solid  rgb(170, 174, 174);
+    display: flex;
+    
+    
+    
+
+}
+
+.user-info p{
+    color: black;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+
+
+.user-info img{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 1px solid orange;
+    
 }

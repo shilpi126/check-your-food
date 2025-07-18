@@ -13,11 +13,9 @@ import PublicRoute from './components/PublicRoute';
 import ResetPassword from './pages/ResetPassword';
 import HealthIssue from './pages/HealthIssue';
 import Review from './pages/Review';
-import ReviewContext from './context/review-context';
 
 
 function App() {
-   const reviewCtx = useContext(ReviewContext)
   
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.token;
@@ -29,9 +27,6 @@ function App() {
   },[])
 
 
-  useEffect(()=>{
-      reviewCtx.readReview()
-    },[])
 
 
 

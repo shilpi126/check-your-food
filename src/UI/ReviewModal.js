@@ -5,7 +5,7 @@ import IngredientsChartPage from '../components/IngredientsChartPage';
 import ReviewForm from '../components/ReviewForm';
 import { IoCloseSharp } from "react-icons/io5";
 
-const ReviewModal = () => {
+const ReviewModal = (props) => {
 
     
 
@@ -26,7 +26,7 @@ const ReviewModal = () => {
         <ReviewForm/>
 
       
-        <button className='review-modal-btn' ><IoCloseSharp size={25}/></button>
+        <button className='review-modal-btn' onClick={props.onClose}><IoCloseSharp size={25}/></button>
       
 
         </div>,portalElement)}
