@@ -19,7 +19,7 @@ const Home = () => {
       <div className='section-one'>
       
       <div className='img-card'>
-        <img src="https://thefast800.com/wp-content/uploads/2022/09/How-to-stop-eating-junk-food-scaled.jpeg"/>
+        <img src="https://static.vecteezy.com/system/resources/previews/003/491/479/large_2x/beautiful-girl-posing-with-fruits-free-photo.JPG"/>
       </div>
 
 

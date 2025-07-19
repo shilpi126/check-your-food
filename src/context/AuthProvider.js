@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AuthContext from "./auth-context";
-import axios from "axios";
+import axios from 'axios';
 import { useNavigate } from 'react-router';
 
 const api = process.env.REACT_APP_AUTH_API_KEY;
@@ -11,9 +11,9 @@ const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userDa
 const [token,setToken]= useState(localStorage.getItem("token"));
 const navigate = useNavigate();
 const [uid,setUid] =useState(localStorage.getItem("uid"))
-
+ console.log(api)
 const register = async(data) => {
-  //console.log(data)
+ 
 
 try{
 

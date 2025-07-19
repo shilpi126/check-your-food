@@ -122,23 +122,22 @@ let user ={
     <React.Fragment>
       
           {active && <Modal onClose={handleClose} res={result} list={list} ></Modal>}
-   
- {list.length > 0 &&   <div className='container-list'>
+          {list.length === 0 && <div className='container-list' style={{color:"orange",fontSize:"20px"}}>List is emapty!....</div>}
+ { list.length > 0 &&
+  <div className='container-list'>
        {list.map((item,index)=>(
             <div className='list' key={index+1}>{item.ingredients} <p  className={`${item.found === true ? "listR" : "listG"}`}>{item.found ? <RxCrossCircled /> : <GrStatusGood  />
 }</p></div>
       ))}
       
-    </div>}
+    </div>
+}
     {list.length === 0 &&
       <button className='btn' disabled style={{backgroundColor:"gray", color:"black"}}>Is Your Food Healthy</button>
       }
       {list.length > 0 &&
       <button className='btn'  onClick={handleClick}>Is Your Food Healthy</button>
       }
-      
-   
-
 
     </React.Fragment> 
   )

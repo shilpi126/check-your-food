@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ReviewContext from './review-context'
-import axios from 'axios';
+import axios from 'axios'
 
 const api_key = "https://smart-foodie-app-default-rtdb.firebaseio.com"
 const uid =localStorage.getItem("uid")
