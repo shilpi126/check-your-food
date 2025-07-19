@@ -35,9 +35,12 @@ const Ingredients = () => {
 
   return (
     <React.Fragment>
+            <h2 className='form-title'>Ingredients Form</h2>
    <div  className='bg-card'>
-      <h2 className='form-title'>Ingredients Form</h2>
 
+        <div className='first-card'>
+          <img src='https://static.vecteezy.com/system/resources/previews/003/491/479/large_2x/beautiful-girl-posing-with-fruits-free-photo.JPG'/>
+        </div>
         <div className='form-card'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
@@ -66,14 +69,15 @@ const Ingredients = () => {
             />
             
           </form>
+            <div className='item-card'>
+        <IngredientsList items={item}/>
+    </div >
         </div>
       
     </div>
 
 
-    <div className='item-card'>
-        <IngredientsList items={item}/>
-    </div >
+  
     </React.Fragment>
   )
 }

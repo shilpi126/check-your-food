@@ -6,8 +6,7 @@ import { GrStatusGood } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
 import { MdDangerous } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
-import { RiProhibited2Line } from "react-icons/ri";
-import { ingredientRiskLevels } from '../data';
+
 import ReviewContext from '../context/review-context';
 import AuthContext from '../context/auth-context';
 
@@ -49,7 +48,9 @@ const IngredientsList = (props) => {
   let list = props.items;
   const reviewCtx = useContext(ReviewContext)
   const authCtx =useContext(AuthContext)
-  const ud = authCtx.userData
+  const ud = authCtx.userData;
+
+
 let user ={
   name:ud.displayName,
   email:ud.email,
@@ -129,8 +130,11 @@ let user ={
       ))}
       
     </div>}
+    {list.length === 0 &&
+      <button className='btn' disabled style={{backgroundColor:"gray", color:"black"}}>Is Your Food Healthy</button>
+      }
       {list.length > 0 &&
-      <button className='btn' onClick={handleClick}>Is Your Food Healthy</button>
+      <button className='btn'  onClick={handleClick}>Is Your Food Healthy</button>
       }
       
    

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./ReviewForm.css"
 import { CiLock } from "react-icons/ci";
 import Input from '../UI/Input';
@@ -6,43 +6,35 @@ import Button from '../UI/Button';
 import { Label } from '../UI/Label';
 
 import ReviewContext from '../context/review-context';
-import AuthContext from '../context/auth-context';
 
-const ReviewForm = (props) => {
 
-  const authCtx = useContext(AuthContext)
-  const [rating, setRating] = useState(0);
-  const [reviewText, setReviewText]=useState("");
-  const [productName, setProductName]=useState("");
-  const [photo, setPhoto]=useState("")
+const EditReview = (props) => {
+
+  
+  const [rating, setRating] = useState(props.editdata.rating);
+  const [reviewText, setReviewText]=useState(props.editdata.reviewText);
+  const [productName, setProductName]=useState(props.editdata.productName);
+  const [photo, setPhoto]=useState(props.editdata.image)
   const reviewCtx = useContext(ReviewContext);
-  const userData = authCtx.userData;
 
-  const user ={
-    name:userData.displayName,
-    email:userData.email,
-    image:userData.photoUrl,
-    uid:userData.localId,
-  }
 
-  //console.log(user)
 
   const handleFormSubmit =(e) =>{
       e.preventDefault()
-      console.log(rating)
+      //console.log(rating)
       const productData = {
+        id:props.editdata.id,
         reviewText,
         rating,
         productName,
         photo,
-        user,
-
+        user:props.editdata.user,
 
       }
-      //console.log(productData)
-      reviewCtx.createReview(productData);
       
+      reviewCtx.updateReview(productData);
       props.onClose(false)
+
   }
 
 
@@ -50,12 +42,12 @@ const ReviewForm = (props) => {
 
   return (
     <div  className='review-bg-box'>
-      <h2 className='review-title'>Review Form</h2>
+      <h2 className='review-title'>Edit Review </h2>
 
         <div className='review-form-container'>
-          <h1 >< CiLock/></h1>
+        <h1 >< CiLock/></h1>
 
-          <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
             <div>
               
               <Label
@@ -102,7 +94,7 @@ const ReviewForm = (props) => {
               type='url'
               id='photo'
               onChange={(e)=>setPhoto(e.target.value)}
-              
+              value={photo}
               placeholder='Enter photo...'
               required
               className="custom-input"
@@ -144,4 +136,4 @@ const ReviewForm = (props) => {
   )
 }
 
-export default ReviewForm
+export default EditReview

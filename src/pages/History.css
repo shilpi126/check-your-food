@@ -9,7 +9,7 @@
 
 .history-info{
     width: 80%;
-    height: 11rem;
+    height: 14rem;
     background-color: rgb(195, 200, 200,0.2);
     
     margin-bottom: 1rem;
@@ -54,10 +54,16 @@
 }
 
 .sort{
-    height: 1.5rem;
-    width: 6rem;
-    margin-left: 4rem;
+    height: 2rem;
+    width: 8rem;
+    margin-right: 6rem;
     margin-bottom: 10px;
+    padding: 5px;
+    outline: none;
+    float: right;
+    display: block;
+
+    
 }
 
 

@@ -1,12 +1,13 @@
 
 .bg-card{
-    margin-top: 0;
-    width: 100%;
     
+
+    width: 100%;
+    height: 100vh;
     display: flex;
-justify-content: center;
-    flex-direction: column;
-    align-items: center;
+justify-content: space-evenly;
+    margin-top: 1rem;
+    
 
 }
 
@@ -17,16 +18,27 @@ justify-content: center;
     text-transform: uppercase;
     font-weight: 500;
     font-size: large;
-    margin-top: 3rem;
+    margin-top: 5rem;
 
+   
+}
+
+.first-card{
+    width: 45%;
+    height: 400px;
     
 }
 
-
+.first-card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
 
 
 .form-card {
-    width: 25rem;
+  
+    width: 45%;
     height: 10rem;
     background-color: white;
     /* border: 1px solid gray; */
@@ -43,6 +55,7 @@ justify-content: center;
     
     flex-direction: column;
     padding:5px ;
+    
     
     
     

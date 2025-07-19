@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from "react-dom"
-import "./ReviewModal.css";
-import IngredientsChartPage from '../components/IngredientsChartPage';
-import ReviewForm from '../components/ReviewForm';
-import { IoCloseSharp } from "react-icons/io5";
+import "./EditReviewModal.css";
 
-const ReviewModal = (props) => {
+import { IoCloseSharp } from "react-icons/io5";
+import EditReview from '../components/EditReview';
+
+const EditReviewModal = (props) => {
 
     
 
@@ -20,14 +20,12 @@ const ReviewModal = (props) => {
         ,portalElement
         )}
 
-
         {ReactDOM.createPortal(
         <div className='review-modal-card'> 
-        <ReviewForm onClose={props.onClose}/>
-
-      
+        <EditReview editdata={props.editdata} onClose={props.onClose}/>
+        
         <button className='review-modal-btn' onClick={props.onClose}><IoCloseSharp size={25}/></button>
-      
+        
 
         </div>,portalElement)}
         </>
@@ -36,4 +34,4 @@ const ReviewModal = (props) => {
   )
 }
 
-export default ReviewModal
+export default EditReviewModal

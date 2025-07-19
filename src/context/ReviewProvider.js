@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ReviewContext from './review-context'
 import axios from 'axios';
 
@@ -7,12 +7,12 @@ const uid =localStorage.getItem("uid")
 
 
 const ReviewProvider = ({children}) => {
-  const initialData = JSON.parse(localStorage.getItem("pdata"))
+  
    const [loading,setLoading]=useState(true)
    const[uniqueTitles,setUniqueTitles] = useState([])
 const [reviewData,setReviewData]= useState([]);
 const [historyData, setHistoryData] = useState([])
-    const [activeReview, setActiveReview] = useState([initialData[0]])
+    const [activeReview, setActiveReview] = useState([])
 
     useEffect(()=>{
       readReview()
@@ -59,7 +59,7 @@ const [historyData, setHistoryData] = useState([])
 
     const createReview  = async(data) =>{
 
-      console.log(data)
+      //console.log(data)
     try{
     const res = await axios.post(`${api_key}/review/.json`,{
       ...data, 
@@ -124,7 +124,36 @@ const [historyData, setHistoryData] = useState([])
   
 
 const updateReview  = async(data) =>{
-  // const id = data.id;
+  const id = data.id;
+  try{
+    const res = await axios.put(`${api_key}/review/${id}.json`,{
+      photo:data.photo,
+      rating:data.rating,
+      reviewText:data.reviewText,
+      productName:data.productName,
+      user:data.user,
+      
+    }
+    );
+    const response = res.data;
+    //console.log(response);
+    const product ={
+      id:response,
+      image:data.photo,
+      rating:data.rating,
+      reviewText:data.reviewText,
+      productName:data.productName,
+      user:data.user,
+      
+      
+    }
+
+    setReviewData((prev) => 
+      prev.map((item)=>(item.id === id ? product : item)))
+      
+    }catch(err){
+        console.log(err);
+    }
   
 }
 
@@ -152,15 +181,15 @@ const deleteReview  = async(id) =>{
 
   const createHistory  = async(data) =>{
 
-      console.log(data)
+      //console.log(data)
     try{
-    const res = await axios.post(`${api_key}/history/.json`,{
+    const res = await axios.post(`${api_key}/history/${uid}.json`,{
       ...data, 
       
     }
     );
     const response = res.data.name;
-    console.log(response);
+    //console.log(response);
     const product ={
       id:response,
       list:data.list,
@@ -179,17 +208,17 @@ const deleteReview  = async(id) =>{
 
     }
 
-    console.log(historyData)
+    //console.log(historyData)
 
       const getHistoryData  = async() => {
     try{
-        const res = await axios.get(`${api_key}/history.json`);
+        const res = await axios.get(`${api_key}/history/${uid}.json`);
         const response = res.data;
-        console.log(response)
+        //console.log(response)
         const data=[]
         
         for(let key in response){
-          console.log(key)
+          //console.log(key)
         const product ={
       id:key,
       list:response[key].list,
@@ -201,7 +230,7 @@ const deleteReview  = async(id) =>{
         }
 
           data.push(product)
-          console.log(product);
+          //console.log(product);
         }
       setHistoryData(data)
         }catch(err){
@@ -209,7 +238,7 @@ const deleteReview  = async(id) =>{
         }
     }
 
-    console.log(historyData)
+   // console.log(historyData)
 
     const reviewValue = {
     reviewData,

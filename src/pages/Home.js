@@ -1,14 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import "./Home.css"
 
-import Header from '../components/Header'
-import bg from "../assets/food_banner_design.png"
 import banner from "../assets/food_banner_design.png"
-import Footer from '../components/Footer'
+
 import ReviewContext from '../context/review-context'
 
 const Home = () => {
-   const reviewCtx = useContext(ReviewContext)
+  
 
   
 
