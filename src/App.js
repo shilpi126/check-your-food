@@ -13,6 +13,7 @@ import PublicRoute from './components/PublicRoute';
 import ResetPassword from './pages/ResetPassword';
 import History from "./pages/History"
 import Review from './pages/Review';
+import VerifyEmailPage from './pages/VerifyEmailPage';
 
 
 function App() {
@@ -41,14 +42,15 @@ function App() {
       <Route path='/review' element={<PrivateRoute><Review/></PrivateRoute>}/>
       <Route path='/history' element={<PrivateRoute><History/></PrivateRoute>}/>
       <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
-
+      
 
       
       <Route path='/login' element={<PublicRoute><Login/></PublicRoute>  }/>
       <Route path='/forget-password' element={<PublicRoute><ForgetPassword/></PublicRoute>}/>
       <Route path='/reset-password' element={<PublicRoute><ResetPassword/></PublicRoute>}/>
       <Route path='/register' element={<PublicRoute><Register/></PublicRoute>}/> 
-      
+            
+      <Route path='/confirm-verify' element={<PublicRoute><VerifyEmailPage/></PublicRoute>  }/>
       </Routes>
       </React.Fragment>
 

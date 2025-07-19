@@ -12,6 +12,8 @@ const [token,setToken]= useState(localStorage.getItem("token"));
 const navigate = useNavigate();
 const [uid,setUid] =useState(localStorage.getItem("uid"))
  console.log(api)
+
+
 const register = async(data) => {
  
 
@@ -24,9 +26,15 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 
 });
 
- const response = res.data;
+ const response = res.data.idToken;
+ //console.log(response)
 
 
+
+  verifyEmail(response)
+  navigate("/confirm-verify")
+
+ 
  //console.log(response);
   
 }catch(err){
@@ -63,6 +71,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
   localStorage.setItem("token",userToken)
   localStorage.setItem("uid",uid)
   setUid(uid)
+ 
 
 }catch(err){
     console.log(err);
@@ -176,6 +185,48 @@ const resetPassword = async(data) =>{
 
 
 
+  const verifyEmail = async(userToken) =>{
+        
+        try{
+    const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${api}`,{
+          requestType:"VERIFY_EMAIL",
+          idToken:userToken,
+        }
+      )
+
+    const response = res.data;
+    
+    console.log(response);
+  
+      
+    }catch(err){
+        console.log(err);
+    }
+  }
+
+
+
+
+const confirmVerifyEmail = async(data) =>{
+    
+    try{
+    const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${api}`,{
+    oobCode: data.oobCode,
+    
+
+}
+
+);
+
+ const response = res.data;
+
+ console.log(response);
+  navigate("/login")
+}catch(err){
+    console.log(err);
+}
+}
+
 
 
 
@@ -189,6 +240,8 @@ const authValue = {
     userData,
     forgetPassword,
     resetPassword,
+    verifyEmail,
+    confirmVerifyEmail,
 }
 
   return (
