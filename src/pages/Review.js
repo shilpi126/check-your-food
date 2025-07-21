@@ -64,7 +64,7 @@ const handleDelete = (id) =>{
 
     return (
       <>
-      <div className='total-review-card'><p>Total reviews : {reviewData.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
+      <div className='total-review-card'><p>Total Reviews : {reviewData.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
       {isEditReview && <EditReviewModal editdata={editData} onClose={(e)=>{setIsEditReview(false)}}/>}
         {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
         

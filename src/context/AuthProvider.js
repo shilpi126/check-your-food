@@ -71,7 +71,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
   localStorage.setItem("token",userToken)
   localStorage.setItem("uid",uid)
   setUid(uid)
- 
+  
 
 }catch(err){
     console.log(err);

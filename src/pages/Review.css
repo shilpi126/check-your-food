@@ -1,16 +1,13 @@
 .review-box{
     width: 100%;
     height:100vh;
-
     display: flex;
-        background-color: rgba(164, 168, 168, 0.2);
+    background-color: rgba(164, 168, 168, 0.2);
     margin: 0;
     justify-content: space-evenly;
 }
 
 .review-product{
-    
-
     margin-top: 2rem;
     width: 20%;
     background-color: white;
@@ -19,25 +16,28 @@
 .total-review-card{
     height: 3rem;
     width: 100%;
-    background-color: orange;
+    background-color: rgb(1, 6, 26);
     display: flex;
     margin-top: 4rem;
     justify-content: space-between;
     align-items: center;
     
+    
 }
 
 .total-review-card p{
-    color: black;
+    color:white;
     font-weight: 500;
-    padding-left: 1rem;
+    padding-left: 2rem;
+    margin-top: 10px;
 }
 
 .total-review-card button{
     background-color: transparent;
     border: none;
     margin: 1rem;
-    padding-right: 1rem;
+    color:white;
+    padding-right: 2rem;
 }
 
 
@@ -61,7 +61,7 @@
     height: 15rem;
     width: 100%;
     color: black;
-    margin-top: -10px;
+    
     padding-left: 1rem;
     padding-right: 1rem;
 
@@ -77,8 +77,8 @@
 .review-img{
     width: 200px;
     height: 100px;
-    margin-top: -10px;
-    margin-bottom: -20px;
+    
+    
 }
 
 .review-btn-box {
@@ -89,6 +89,7 @@
     align-items: center;
     padding-top: 1rem;
     margin-right: 4rem;
+
     
 }
 

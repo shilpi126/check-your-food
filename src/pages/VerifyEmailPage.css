@@ -1,10 +1,7 @@
-.bg-box{
+.verify-bg-box{
     width: 100%;
     height:100vh;
-    background-image: url(https://i.etsystatic.com/33656175/r/il/e33261/3770981426/il_1140xN.3770981426_gx61.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: rgb(1, 14, 37);
     display: flex;
     
     flex-direction: column;
@@ -25,14 +22,14 @@
 
 
 
-.form-container {
+.verify-form-container {
     width: 25rem;
-    height: 20rem;
+    height: 15rem;
     box-shadow: 0 4px 8px rgba(202, 206, 212, 0.5);
     
 }
 
-.form-container form{
+.verify-form-container form{
     width: 100%;
     height: 100%;
     display: flex;
@@ -46,7 +43,7 @@
 }
 
 
-.form-container h1{
+.verify-form-container h1{
     color: white;
     text-align: center;
     margin-bottom: 0;
@@ -55,20 +52,16 @@
     font-size: x-large;
 }
 
-.form-container form div{
-    
+.verify-form-container form .verify-div{
     width: 80%;
     height: 3rem;
     margin-top: 5px;
-    
-    
     
 }
 
 
 
-.custom-input{
-    
+.verify-custom-input{
     width: 100%;
     height: 1.5rem;
     margin-top: 5px;
@@ -84,9 +77,9 @@
 }
 
 
-.custom-button{
+.verify-custom-button{
     
-    width: 10rem;
+    width: 8rem;
     height: 1.8rem;
     background-color: rgb(222, 91, 3);
     margin-top: 20px;
@@ -133,7 +126,7 @@
     margin-top: -15px;
     color: orange;
     
-   
+    
    
 }
 

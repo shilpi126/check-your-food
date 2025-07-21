@@ -35,14 +35,14 @@ const VerifyEmailPage = () => {
 
 
   return (
-    <div  className='bg-box'>
+    <div  className='verify-bg-box'>
       <h2 className='title'>Verify Email Form</h2>
       <p className='reset-msg'>Enter url that sent to user's email for confirm email verification.</p>
-        <div className='form-container'>
+        <div className='verify-form-container'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
             
-            <div>
+            <div className='verify-div'>
               
               <Label
               htmlFor="url"
@@ -56,17 +56,17 @@ const VerifyEmailPage = () => {
               onChange={(e)=>{setUrl(e.target.value)}}
               placeholder='Enter url...'
               required
-              className="custom-input"
+              className="verify-custom-input"
               />
             </div>
 
            
             <Button 
             type='submit'
-            className='custom-button'
+            className='verify-custom-button'
             text="Submit"
             />
-            <p className='p-link-text'>Remember Password ? <Link to="/login">Login</Link></p>
+            <p className='p-link-text'>Dont want to verify ? <Link to="/login">Login</Link></p>
           </form>
            
         </div>

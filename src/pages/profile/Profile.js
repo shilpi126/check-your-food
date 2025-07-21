@@ -5,28 +5,68 @@ import Input from '../../UI/Input';
 import Button from '../../UI/Button';
 import { Label } from '../../UI/Label';
 import AuthContext from '../../context/auth-context';
-import { Link } from 'react-router-dom';
+
 
 const Profile = (props) => {
   const [imageUrl, setImageUrl] = useState("");
-  
+   
   const [username, setUserName]=useState("");
   const authCtx = useContext(AuthContext);
-
+ const [error, setError]=useState({})
   const profileData = props.user;
 
-console.log(profileData)
+  
+    const validateUsername = () => {
+      if(username.trim().length === 0){
+        setError((prevErrors) => ({...prevErrors, username:"Enter Username"}))
+        return false;
+      }else{
+              setError((prevErrors) => ({...prevErrors, username: null}))
+              return true;
+      }
+    }
+
+    
+      const validateUrl = () => {
+      if(imageUrl.trim().length === 0){
+        setError((prevErrors) => ({...prevErrors, imageUrl:"Enter valid url."}))
+        return false;
+      }else{
+        setError((prevErrors) => ({...prevErrors, imageUrl: null}))
+        return true;
+      }
+    }
+  
+  
+    const isFormValidate = () =>{
+      
+      const isUrlValid = validateUrl();
+      const isUsernameValid = validateUsername();
+    
+      if(isUrlValid && isUsernameValid){
+        return true;
+      }else{
+        return false;
+      }
+     
+    }
+  
 
   
 
   const handleFormSubmit =(e) =>{
       e.preventDefault()
-      const userData = {
+     if(isFormValidate()){
+       const userData = {
         username,
         imageUrl,
       }
-
+     //console.log(userData)
       authCtx.updateProfile(userData);
+     }else{
+      console.log("evter valid data!")
+     }
+
       setImageUrl("")
       setUserName("")
 
@@ -45,12 +85,12 @@ console.log(profileData)
     </div>
 
     }
-          
+        
 
       {profileData && <div>
       <img src={profileData.photoUrl} className='profile-pic' alt='profile-image'/>
-        <p className='profile-email'>Name : {profileData?.displayName}</p>
-        <p className='profile-email'>Email : {profileData?.email}</p>
+        <p className='profile-email'>Name : {profileData.displayName ? profileData.displayName : "update profile"}</p>
+        <p className='profile-email'>Email : {profileData.email ? profileData?.email : "update profile"}</p>
     </div>
     }
 
@@ -58,7 +98,7 @@ console.log(profileData)
 
 
           
-   </div>
+  </div>
         </div>
           <div className='form-containerr'>
           <h1 ><CiLock /></h1>
@@ -80,6 +120,7 @@ console.log(profileData)
               className="custom-inputt"
               
               />
+              {error.username && <p className='error'>{error.username}</p>}
             </div>
           
             <div>
@@ -98,6 +139,7 @@ console.log(profileData)
               required
               className="custom-inputt"
               />
+              {error.imageUrl && <p className='error'>{error.imageUrl}</p>}
             </div>
 
             <Button 

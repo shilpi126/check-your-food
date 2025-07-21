@@ -1,10 +1,7 @@
-.bg-box{
+.login-bg-box{
     width: 100%;
     height:100vh;
-    background-image: url(https://i.etsystatic.com/33656175/r/il/e33261/3770981426/il_1140xN.3770981426_gx61.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-color: rgb(1, 14, 37);
     display: flex;
     
     flex-direction: column;
@@ -55,10 +52,10 @@
     font-size: x-large;
 }
 
-.form-container form div{
+.form-container form .login-input-card{
     
     width: 80%;
-    height: 3rem;
+    height: 4rem;
     margin-top: 5px;
     
     
@@ -67,7 +64,7 @@
 
 
 
-.custom-input{
+.login-custom-input{
     
     width: 100%;
     height: 1.5rem;
@@ -84,12 +81,12 @@
 }
 
 
-.custom-button{
+.login-custom-button{
     
-    width: 10rem;
+    width: 8rem;
     height: 1.8rem;
     background-color: rgb(222, 91, 3);
-    margin-top: 20px;
+    margin: 10px;
     border-radius: 3px;
     border: none;
     color: white;
@@ -103,6 +100,7 @@
     font-weight: 200;
     font-size: medium;
     text-align: center;
+    margin-top: 5px;
 }
 
 .p-link-text a{
@@ -116,14 +114,28 @@
     color: white;
 }
 
-.link-text{
+.login-link-text{
     margin-bottom: 0px;
+    margin-top: 5px;
+    font-size: medium;
+    color: white;
 }
 
-.link-text a{
-    text-decoration: none;
-    color: white;
+.login-link-text a{
     font-size: medium;
+    color: orange;
+    
+
+    
+    
+}
+
+
+.error{
+    color: red;
+    font-size: small;
+    margin-top: -2px;
+    text-align: justify;
     
     
 }

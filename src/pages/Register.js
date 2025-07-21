@@ -13,8 +13,57 @@ const Register = () => {
   const [username, setUserName]=useState("");
   const authCtx = useContext(AuthContext);
 
+  const [error, setError]=useState({})
+  const validateUsername = () => {
+    if(username.trim().length === 0){
+      setError((prevErrors) => ({...prevErrors, username:"Enter Username"}))
+      return false;
+    }else{
+            setError((prevErrors) => ({...prevErrors, username: null}))
+            return true;
+    }
+  }
+
+  const validateEmail = () => {
+    if(!email.includes("@")){
+      setError((prevErrors) => ({...prevErrors, email:"Invalid Email"}))
+      return false;
+    }else{
+            setError((prevErrors) => ({...prevErrors, email: null}))
+            return true;
+    }
+  }
+
+  
+  const validatePassword = () => {
+    if(password.trim().length <= 6){
+      setError((prevErrors) => ({...prevErrors, password:"Password must be longer than 6 characters."}))
+      return false;
+    }else{
+            setError((prevErrors) => ({...prevErrors, password: null}))
+            return true;
+    }
+  }
+
+
+  const isFormValidate = () =>{
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+    const isUsernameValid =validateUsername();
+    
+
+    if(isUsernameValid && isEmailValid && isPasswordValid){
+      return true;
+    }else{
+      return false;
+    }
+  }
+  
+
   const handleFormSubmit =(e) =>{
-      e.preventDefault()
+      e.preventDefault();
+    if(isFormValidate()){
+        
       const userData = {
         username,
         email,
@@ -23,22 +72,28 @@ const Register = () => {
       }
 
 
-      console.log(userData)
+      //console.log(userData)
 
       authCtx.register(userData);
-      
+    }else{
+      console.log("please enter valid data!")
+    }
+  
+      setEmail("")
+      setPassword("")
+      setUserName("")
 
   }
 
 
   return (
-    <div  className='bg-box'>
+    <div  className='register-bg-box'>
       <h2 className='title'>Register Form</h2>
-
+        
         <div className='form-container'>
-          <h1 ><CiLock /></h1>
+          <h1 className='lock'><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
-            <div>
+            <div className='input-card'>
               
               <Label
               htmlFor="username"
@@ -51,12 +106,14 @@ const Register = () => {
               value={username}
               onChange={(e)=>{setUserName(e.target.value)}}
               placeholder='Enter name...'
-              required
-              className="custom-input"
+              //required
+              className="register-custom-input"
               
               />
+              {error.username && <p className='error'>{error.username}</p>}
+      
             </div>
-            <div>
+            <div className='input-card'>
               
               <Label
               htmlFor="email"
@@ -69,11 +126,13 @@ const Register = () => {
               value={email}
               onChange={(e)=>{setEmail(e.target.value)}}
               placeholder='Enter Email...'
-              required
-              className="custom-input"
+              //required
+              className="register-custom-input"
               />
+              {error.email && <p className='error'>{error.email}</p>}
+      
             </div>
-            <div>
+            <div className='input-card'>
               
               <Label
               htmlFor="password"
@@ -86,14 +145,16 @@ const Register = () => {
               value={password}
               onChange={(e)=>{setPassword(e.target.value)}}
               placeholder='Enter password...'
-              required
-              className="custom-input"
+              //required
+              className="register-custom-input"
               />
+              {error.password && <p className='error'>{error.password}</p>}
+      
             </div>
 
             <Button 
             type='submit'
-            className='custom-button'
+            className='register-custom-button'
             text="Submit"
             />
             <p>Already Have Account ? <Link to="/login">Login</Link></p>

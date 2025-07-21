@@ -14,9 +14,50 @@ const Login = () => {
   
   const authCtx = useContext(AuthContext);
 
+    const [error, setError]=useState({})
+  
+  
+    const validateEmail = () => {
+      if(!email.includes("@")){
+        setError((prevErrors) => ({...prevErrors, email:"Invalid Email"}))
+        return false;
+      }else{
+              setError((prevErrors) => ({...prevErrors, email: null}))
+              return true;
+      }
+    }
+  
+    
+    const validatePassword = () => {
+      if(password.trim().length <= 6){
+        setError((prevErrors) => ({...prevErrors, password:"Password must be longer than 6 characters."}))
+        return false;
+      }else{
+              setError((prevErrors) => ({...prevErrors, password: null}))
+              return true;
+      }
+    }
+  
+  
+    const isFormValidate = () =>{
+      const isEmailValid = validateEmail();
+      const isPasswordValid = validatePassword();
+    
+      
+  
+      if(isEmailValid && isPasswordValid){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    
+
   const handleFormSubmit =(e) =>{
       e.preventDefault()
-      const userData = {
+
+      if(isFormValidate()){
+   const userData = {
         
         email,
         password,
@@ -26,21 +67,25 @@ const Login = () => {
       //console.log(userData)
       
       authCtx.login(userData);
-      
+      }else{
+        console.log("enter valid data!")
+      }
+      setEmail("")
+      setPassword("")
       
 
   }
 
 
   return (
-    <div  className='bg-box'>
+    <div  className='login-bg-box'>
       <h2 className='title'>Login Form</h2>
 
         <div className='form-container'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
-           
-            <div>
+            
+            <div className='login-input-card'>
               
               <Label
               htmlFor="email"
@@ -54,10 +99,11 @@ const Login = () => {
               onChange={(e)=>{setEmail(e.target.value)}}
               placeholder='Enter Email...'
               required
-              className="custom-input"
+               className="login-custom-input"
               />
+                {error.email && <p className='error'>{error.email}</p>}
             </div>
-            <div>
+            <div className='login-input-card'>
               
               <Label
               htmlFor="password"
@@ -71,13 +117,14 @@ const Login = () => {
               onChange={(e)=>{setPassword(e.target.value)}}
               placeholder='Enter password...'
               required
-              className="custom-input"
+              className="login-custom-input"
               />
+            {error.password && <p className='error'>{error.password}</p>}
             </div>
-            <p className='link-text'><Link to="/forget-password">Forget Password</Link></p>
+            <p className='login-link-text'>Have You Forget Password ? <Link to="/forget-password">Click Here</Link></p>
             <Button 
             type='submit'
-            className='custom-button'
+            className='login-custom-button'
             text="Submit"
             />
             <p className='p-link-text'>Don't Have Account ? <Link to="/register">Sign up</Link></p>

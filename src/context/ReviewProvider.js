@@ -18,7 +18,7 @@ const [historyData, setHistoryData] = useState([])
       readReview()
     },[])
 
-       useEffect(()=>{
+    useEffect(()=>{
       getHistoryData()
     },[])
 
@@ -121,8 +121,6 @@ const [historyData, setHistoryData] = useState([])
     }
 
 
-  
-
 const updateReview  = async(data) =>{
   const id = data.id;
   try{
@@ -178,14 +176,13 @@ const deleteReview  = async(id) =>{
 }
 
 
-
   const createHistory  = async(data) =>{
 
-      //console.log(data)
+      console.log(data)
     try{
     const res = await axios.post(`${api_key}/history/${uid}.json`,{
       ...data, 
-      
+    date:new Date().toISOString(),
     }
     );
     const response = res.data.name;
@@ -196,7 +193,7 @@ const deleteReview  = async(id) =>{
       result:data.result,
       
       user:data.user,
-      
+      date:new Date().toISOString(),
       
     }
 
@@ -214,7 +211,7 @@ const deleteReview  = async(id) =>{
     try{
         const res = await axios.get(`${api_key}/history/${uid}.json`);
         const response = res.data;
-        //console.log(response)
+        console.log(response)
         const data=[]
         
         for(let key in response){
@@ -225,12 +222,12 @@ const deleteReview  = async(id) =>{
       result:response[key].res,
       
       user:response[key].user,
-      
+      date:response[key].date,
       
         }
 
           data.push(product)
-          //console.log(product);
+          console.log(product);
         }
       setHistoryData(data)
         }catch(err){

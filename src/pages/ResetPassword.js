@@ -1,6 +1,6 @@
 
 import React, { useContext, useState } from 'react'
-import "./ForgetPassword.css"
+import "./ResetPassword.css"
 import { CiLock } from "react-icons/ci";
 import Input from '../UI/Input';
 import Button from '../UI/Button';
@@ -13,13 +13,54 @@ const ResetPassword = () => {
   const [url,setUrl]=useState("");
   
   const authCtx = useContext(AuthContext);
+  const [error, setError]=useState({})
 
 
 
-  const handleFormSubmit =(e) =>{
+
+
+   
+    const validatePassword = () => {
+      if(password.trim().length <= 6){
+        setError((prevErrors) => ({...prevErrors, password:"Password must be longer than 6 characters."}))
+        return false;
+      }else{
+              setError((prevErrors) => ({...prevErrors, password: null}))
+              return true;
+      }
+    }
+
+
+      const validateUrl = () => {
+      if(url.trim().length === 0){
+        setError((prevErrors) => ({...prevErrors, url:"Enter valid url."}))
+        return false;
+      }else{
+              setError((prevErrors) => ({...prevErrors, url: null}))
+              return true;
+      }
+    }
+  
+  
+    const isFormValidate = () =>{
+      const isUrlValid = validateUrl();
+      const isPasswordValid = validatePassword();
+    
+      
+  
+      if(isUrlValid && isPasswordValid){
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+
+      const handleFormSubmit =(e) =>{
       e.preventDefault()
 
-      const param = new URL(url).searchParams;
+     if(isFormValidate()){
+       const param = new URL(url).searchParams;
       const oobCode =  param.get("oobCode");
 
       const userData = {
@@ -28,39 +69,41 @@ const ResetPassword = () => {
       }
 
       authCtx.resetPassword(userData);
+     }else{
+      console.log("enter valid data!")
+     }
       
   }
-
-
-
+    
 
   return (
-    <div  className='bg-box'>
+    <div  className='reset-bg-box'>
       <h2 className='title'>Reset Password Form</h2>
       <p className='reset-msg'>Enter url that sent to user's email for reset password.</p>
-        <div className='form-container'>
+        <div className='reset-form-container'>
           <h1 ><CiLock /></h1>
           <form onSubmit={handleFormSubmit}>
             
-            <div>
+            <div className='reset-input-card'>
               
               <Label
               htmlFor="url"
               text="Url :"
               className="custom-label"
               />
-                <Input
+              <Input
               type='url'
               id='url'
               value={url}
               onChange={(e)=>{setUrl(e.target.value)}}
               placeholder='Enter url...'
               required
-              className="custom-input"
+              className="reset-custom-input"
               />
+              {error.url && <p className='error'>{error.url}</p>}
             </div>
 
-            <div>
+            <div  className='reset-input-card'>
               
               <Label
               htmlFor="password"
@@ -74,18 +117,20 @@ const ResetPassword = () => {
               onChange={(e)=>{setPassword(e.target.value)}}
               placeholder='Enter password...'
               required
-              className="custom-input"
+              className="reset-custom-input"
               />
+                {error.password && <p className='error'>{error.password}</p>}
             </div>
 
             <Button 
             type='submit'
-            className='custom-button'
+            className='reset-custom-button'
             text="Submit"
             />
+
             <p className='p-link-text'>Remember Password ? <Link to="/login">Login</Link></p>
           </form>
-           
+            
         </div>
       
     </div>

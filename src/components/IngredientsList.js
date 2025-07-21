@@ -51,12 +51,15 @@ const IngredientsList = (props) => {
   const ud = authCtx.userData;
 
 
-let user ={
-  name:ud.displayName,
-  email:ud.email,
-  uid:ud.localId,
-  image:ud.photoUrl,
-}
+  
+    let user ={
+    name:ud.displayName ? ud.displayName :"update profile" ,
+    email:ud.email,
+    uid:ud.localId,
+    image:ud.photoUrl ? ud.photoUrl :"update profile",
+  }
+
+
  const countItem = (list) =>{
 
   let goodInredient = 0; 
@@ -121,12 +124,12 @@ let user ={
   return (
     <React.Fragment>
       
-          {active && <Modal onClose={handleClose} res={result} list={list} ></Modal>}
-          {list.length === 0 && <div className='container-list' style={{color:"orange",fontSize:"20px"}}>List is emapty!....</div>}
- { list.length > 0 &&
+      {active && <Modal onClose={handleClose} res={result} list={list} ></Modal>}
+      {list.length === 0 && <div className='container-list' style={{color:"orange",fontSize:"20px"}}>List is emapty!....</div>}
+    { list.length > 0 &&
   <div className='container-list'>
-       {list.map((item,index)=>(
-            <div className='list' key={index+1}>{item.ingredients} <p  className={`${item.found === true ? "listR" : "listG"}`}>{item.found ? <RxCrossCircled /> : <GrStatusGood  />
+    {list.map((item,index)=>(
+            <div className='list' key={index+1}><p className='list-item'>{item.ingredients}</p> <p  className={`${item.found === true ? "listR" : "listG"}`}>{item.found ? <RxCrossCircled /> : <GrStatusGood  />
 }</p></div>
       ))}
       

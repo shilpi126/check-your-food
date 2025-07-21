@@ -15,6 +15,7 @@ import History from "./pages/History"
 import Review from './pages/Review';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 
+import FooterPage from './components/FooterPage';
 
 function App() {
   
@@ -29,9 +30,6 @@ function App() {
 
 
 
-
-
-
   return (
     
     <React.Fragment>
@@ -43,8 +41,6 @@ function App() {
       <Route path='/history' element={<PrivateRoute><History/></PrivateRoute>}/>
       <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
       
-
-      
       <Route path='/login' element={<PublicRoute><Login/></PublicRoute>  }/>
       <Route path='/forget-password' element={<PublicRoute><ForgetPassword/></PublicRoute>}/>
       <Route path='/reset-password' element={<PublicRoute><ResetPassword/></PublicRoute>}/>
@@ -52,6 +48,7 @@ function App() {
             
       <Route path='/confirm-verify' element={<PublicRoute><VerifyEmailPage/></PublicRoute>  }/>
       </Routes>
+      {/* {isLoggedIn &&  <FooterPage/>} */}
       </React.Fragment>
 
       );

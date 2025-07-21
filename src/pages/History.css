@@ -10,7 +10,7 @@
 .history-info{
     width: 80%;
     height: 14rem;
-    background-color: rgb(195, 200, 200,0.2);
+    background-color: rgb(195, 200, 200,0.5);
     
     margin-bottom: 1rem;
     padding: 1rem;
@@ -48,9 +48,9 @@
 
 .history-list{
     display: flex;
-    background-color: aqua;
-      margin-top: 2.8rem;
-      margin-bottom: -10px;
+
+    margin-top: 3rem;
+    margin-bottom: 10px;
 }
 
 .sort{
