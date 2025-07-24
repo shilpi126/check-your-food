@@ -1,8 +1,7 @@
   import React, { useContext, useEffect, useState } from 'react'
   import "./Review.css"
   import { IoIosAddCircle } from "react-icons/io";
-  import { FaPlateWheat } from "react-icons/fa6";
-  
+
   import { MdEdit } from "react-icons/md";
   import { FaStar } from "react-icons/fa";
   import ReviewModal from '../UI/ReviewModal';
@@ -10,7 +9,7 @@
 import Loading from '../components/Loading';
 import { RxCross2 } from "react-icons/rx";
 import { BiFoodTag } from "react-icons/bi";
-import { LuArrowRight } from "react-icons/lu";
+
 import EditReviewModal from '../UI/EditReviewModal';
 
 
@@ -18,45 +17,65 @@ import EditReviewModal from '../UI/EditReviewModal';
   const Review = () => {
     const uid =localStorage.getItem("uid")
     const reviewCtx = useContext(ReviewContext)
-    const loading = reviewCtx.loading;
-    const uniqueTitles = reviewCtx.uniqueTitles;
     let reviewData = reviewCtx.reviewData;
-    const activeReview = reviewCtx.activeReview;
+
     const[reviewForm,setReviewForm]=useState(false)
     const[isEditReview, setIsEditReview]=useState(false)
     const [editData, setEditData] =useState(null)
-    
-      
-    
-    const handleClick = (productName) => {
-    
-      reviewCtx.filterProductReview(productName)
-      
 
-    }
+    const[uniqueTitles,setUniqueTitles] = useState(["all"])
+const [activeReview, setActiveReview] = useState([])
+
+
+
+
+    const findUnique = () =>{
+          const lowerCased = [];
+        for(let i=0; i<reviewData.length; i++){
+          const lower = reviewData[i].productName.toLowerCase().trim();
+    
+          if(!lowerCased.includes(lower)){
+            lowerCased.push(lower);
+          }
+        }
+    
+        setUniqueTitles(["all", ...lowerCased])
+        }
+
+
 
     useEffect(()=>{
-      if(uniqueTitles && uniqueTitles.length > 0){
-        handleClick(uniqueTitles[0]);
+  if(reviewData.length > 0){
+    setActiveReview(reviewData)
+    findUnique()
+    
+
+  }
+    },[reviewData])
+
+    
+    const filterProductReview = (productName)=>{
+      if(productName === "all"){
+        setActiveReview(reviewData)
+      }else{
+
+      
+    const productReview = reviewData?.filter((item)=>item.productName.toLowerCase() === productName.toLowerCase())
+    setActiveReview(productReview)
       }
-    },[uniqueTitles])
-
-
-
-
-const handleEdit = (item) => {
-  setEditData(item)
-  setIsEditReview(true)
-}
-
-const handleDelete = (id) =>{
-  reviewCtx.deleteReview(id)
+    
+    }
+        
   
+  const handleEdit = (item) => {
+    setEditData(item)
+    setIsEditReview(true)
+  }
 
-
-}
-
-
+  const handleDelete = (id) =>{
+    reviewCtx.deleteReview(id)
+    
+  }
 
     const openReviewForm=()=>{
       setReviewForm(true);
@@ -66,21 +85,21 @@ const handleDelete = (id) =>{
       <>
       <div className='total-review-card'><p>Total Reviews : {reviewData.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
       {isEditReview && <EditReviewModal editdata={editData} onClose={(e)=>{setIsEditReview(false)}}/>}
-        {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
+      {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
         
-      {loading &&<div className='spin'> <Loading /></div>}
+      {!reviewData &&<div className='spin'> <Loading /></div>}
 
-          {!reviewForm && !loading &&
+          {!reviewForm && 
 
           <div className='review-box'>
             
             <div className='review-product' >
-                
+              
                 {uniqueTitles && uniqueTitles.map((productName,index)=>(
-            <div className='dot' key={index}>
+                <div className='dot' key={index}>
                 <BiFoodTag  size={20}  className='dot-icon'/>
-                <h3 key={index} className='product-name' onClick={()=>handleClick(productName)}>{productName}</h3>
-            </div>
+                <h3 key={index} className='product-name' onClick={()=>filterProductReview(productName)}>{productName}</h3>
+                </div>
                 ))}
                   
 

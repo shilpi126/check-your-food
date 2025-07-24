@@ -11,8 +11,7 @@ const [userData, setUserData] = useState(JSON.parse(localStorage.getItem("userDa
 const [token,setToken]= useState(localStorage.getItem("token"));
 const navigate = useNavigate();
 const [uid,setUid] =useState(localStorage.getItem("uid"))
- console.log(api)
-
+console.log(userData)
 
 const register = async(data) => {
  
@@ -45,13 +44,17 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 }
 
 const logout = () =>{
+   setToken("");
+  setUid("");
+   setUserData(null);
   localStorage.removeItem("token");
-  setToken("");
-  setUid("")
   localStorage.removeItem("uid")
+ 
   localStorage.removeItem("userData");
-  setUserData(null)
+  
 }
+
+
 
 
 
@@ -93,7 +96,7 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
 
 });
  const user = res.data;
- console.log(user)
+ //console.log(user)
 
  if(user){
  const obj={
@@ -103,6 +106,8 @@ const res = await axios.post(`https://identitytoolkit.googleapis.com/v1/accounts
  }
  setUserData(obj);
  }
+
+ getUserProfileData();
 
 
 
@@ -233,6 +238,7 @@ const confirmVerifyEmail = async(data) =>{
 const authValue = {
     login,
     token,
+    uid,
     register,
     logout,
     updateProfile,

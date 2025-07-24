@@ -7,14 +7,8 @@ const ReviewContext = createContext({
     deleteReview:(id)=>{},
     updateReview:(id)=>{},
     reviewData:[],
-    uniqueTitles:[],
-    loading:true,
     
-    filterProductReview:(productName)=>{},
-    activeReview:[],
-    createHistory:(data)=>{},
-    historyData:[],
-    getHistoryData:()=>{},
+
 })
 
 

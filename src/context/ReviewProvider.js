@@ -3,58 +3,16 @@ import ReviewContext from './review-context'
 import axios from 'axios'
 
 const api_key = "https://smart-foodie-app-default-rtdb.firebaseio.com"
-const uid =localStorage.getItem("uid")
 
 
 const ReviewProvider = ({children}) => {
-  
-   const [loading,setLoading]=useState(true)
-   const[uniqueTitles,setUniqueTitles] = useState([])
+
 const [reviewData,setReviewData]= useState([]);
-const [historyData, setHistoryData] = useState([])
-    const [activeReview, setActiveReview] = useState([])
+
 
     useEffect(()=>{
       readReview()
     },[])
-
-    useEffect(()=>{
-      getHistoryData()
-    },[])
-
-
-
-
-    const filterProductReview = (productName)=>{
-    const productReview = reviewData?.filter((item)=>item.productName.toLowerCase() === productName.toLowerCase())
-    setActiveReview(productReview)
-    
-    }
-    
-
-  const findUnique = () =>{
-      const lowerCased = [];
-    for(let i=0; i<reviewData.length; i++){
-      const lower = reviewData[i].productName.toLowerCase().trim();
-
-      if(!lowerCased.includes(lower)){
-        lowerCased.push(lower);
-      }
-    }
-
-    setUniqueTitles(lowerCased)
-    }
-
-
-    useEffect(()=>{
-      if(reviewData.length > 0){
-        
-        findUnique()
-        setLoading(false)
-      
-      }
-      
-    },[reviewData])
 
 
     const createReview  = async(data) =>{
@@ -136,7 +94,7 @@ const updateReview  = async(data) =>{
     const response = res.data;
     //console.log(response);
     const product ={
-      id:response,
+      id:data.id,
       image:data.photo,
       rating:data.rating,
       reviewText:data.reviewText,
@@ -156,86 +114,25 @@ const updateReview  = async(data) =>{
 }
 
 const deleteReview  = async(id) =>{
-  // console.log(id)
+  //console.log(id)
     try{
     const res = await axios.delete(`${api_key}/review/${id}.json`
 );
     const response = res.data;
-    console.log(response)
+    //console.log(response)
 
   let filterData = reviewData.filter((item)=>item.id !== id)
-    console.log(filterData)
+    
     setReviewData(filterData)
 
-    setActiveReview((prev)=>prev.filter((item)=>item.id !== id))
     
-    findUnique()
     }catch(err){
         console.log(err);
     }
 }
 
 
-  const createHistory  = async(data) =>{
 
-      console.log(data)
-    try{
-    const res = await axios.post(`${api_key}/history/${uid}.json`,{
-      ...data, 
-    date:new Date().toISOString(),
-    }
-    );
-    const response = res.data.name;
-    //console.log(response);
-    const product ={
-      id:response,
-      list:data.list,
-      result:data.result,
-      
-      user:data.user,
-      date:new Date().toISOString(),
-      
-    }
-
-    setHistoryData((prev)=>[...prev, product])
-      
-    }catch(err){
-        console.log(err);
-    }
-
-    }
-
-    //console.log(historyData)
-
-      const getHistoryData  = async() => {
-    try{
-        const res = await axios.get(`${api_key}/history/${uid}.json`);
-        const response = res.data;
-        console.log(response)
-        const data=[]
-        
-        for(let key in response){
-          //console.log(key)
-        const product ={
-      id:key,
-      list:response[key].list,
-      result:response[key].res,
-      
-      user:response[key].user,
-      date:response[key].date,
-      
-        }
-
-          data.push(product)
-          console.log(product);
-        }
-      setHistoryData(data)
-        }catch(err){
-            console.log(err);
-        }
-    }
-
-   // console.log(historyData)
 
     const reviewValue = {
     reviewData,
@@ -243,13 +140,8 @@ const deleteReview  = async(id) =>{
     readReview,
     updateReview,
     deleteReview,
-    loading,
-    uniqueTitles,
-    activeReview,
-    filterProductReview,
-    createHistory,
-    historyData,
-    getHistoryData,
+    
+  
     }
 
   return (

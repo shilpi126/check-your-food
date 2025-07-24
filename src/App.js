@@ -16,17 +16,19 @@ import Review from './pages/Review';
 import VerifyEmailPage from './pages/VerifyEmailPage';
 
 import FooterPage from './components/FooterPage';
+import ReviewContext from './context/review-context';
+import IngredientsContext from './context/ingredients-contex';
 
 function App() {
-  
+  const ingredientsCtx = useContext(IngredientsContext)
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.token;
   const user= authCtx.userData;
+  
 
-
-  useEffect(()=>{
-    authCtx.getUserProfileData();
-  },[])
+    useEffect(()=>{
+      ingredientsCtx.getHistoryData()
+    },[isLoggedIn])
 
 
 

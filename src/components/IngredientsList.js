@@ -1,4 +1,4 @@
-import React, {useContext, useState } from 'react'
+import React, {useContext, useEffect, useState } from 'react'
 import "./IngredientsList.css"
 import Modal from '../UI/Modal';
 import { FaRegSmile } from "react-icons/fa";
@@ -7,8 +7,9 @@ import { RxCrossCircled } from "react-icons/rx";
 import { MdDangerous } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
 
-import ReviewContext from '../context/review-context';
+
 import AuthContext from '../context/auth-context';
+import IngredientsContext from '../context/ingredients-contex';
 
  const info = [
     {id:1,
@@ -46,19 +47,28 @@ const IngredientsList = (props) => {
   const [active, setActive] = useState(false);
   const [historyData, setHistoryData]=useState({})
   let list = props.items;
-  const reviewCtx = useContext(ReviewContext)
+  const ingredientsCtx = useContext(IngredientsContext)
   const authCtx =useContext(AuthContext)
-  const ud = authCtx.userData;
-
-
-  
     let user ={
-    name:ud.displayName ? ud.displayName :"update profile" ,
-    email:ud.email,
-    uid:ud.localId,
-    image:ud.photoUrl ? ud.photoUrl :"update profile",
+    name:"update profile",
+    uid:authCtx.uid,
+    image:"https://th.bing.com/th?q=User+Account+Icon&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.3&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+  }
+  const [userProfile, setUserProfile]= useState(user)
+
+useEffect(()=>{
+    if(authCtx.userData){
+    const data ={
+    name:authCtx.userData.displayName,
+    uid:authCtx.uid,
+    image:authCtx.userData.photoUrl,
   }
 
+  setUserProfile(data);
+  }
+},[authCtx.userData])
+
+console.log(userProfile)
 
  const countItem = (list) =>{
 
@@ -82,27 +92,27 @@ const IngredientsList = (props) => {
     setActive(true);
   const total  = countItem(list);
 //console.log(total.goodInredient)
-  const  historyD = 
+  const  ingredientsData = 
   {list,
     res:null,
-    user,
+    userProfile,
 
   }
     if(total.count < total.goodInredient ){
       setResult(info[0]);
-      historyD.res=info[0];
-    }else if(total.count == total.goodInredient){
+      ingredientsData.res=info[0];
+    }else if(total.count === total.goodInredient){
     
       setResult(info[1]);
-    historyD.res=info[1];
+    ingredientsData.res=info[1];
     }else{
       setResult(info[2]);
-      historyD.res=info[2];
+      ingredientsData.res=info[2];
     }
 
-    setHistoryData(historyD)
-    reviewCtx.createHistory(historyD)
-//console.log(historyData)
+    setHistoryData(ingredientsData)
+    ingredientsCtx.createHistory(ingredientsData)
+console.log(historyData)
 
 
 
@@ -114,12 +124,12 @@ const IngredientsList = (props) => {
 
   const handleClose = () => {
     setActive(false)
-    list.length =0;
+    //list.length =0;
 
   }
   
 
-  console.log(active)
+  //console.log(active)
   
   return (
     <React.Fragment>

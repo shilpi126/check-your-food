@@ -2,6 +2,7 @@ import { createContext } from "react";
 
 const AuthContext = createContext({
     token:"",
+    uid:"",
     login:(data)=>{},
     register:(data)=>{},
     logout:()=>{},

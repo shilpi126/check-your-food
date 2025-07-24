@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./ReviewForm.css"
 import { CiLock } from "react-icons/ci";
 import Input from '../UI/Input';
@@ -17,15 +17,25 @@ const ReviewForm = (props) => {
   const [photo, setPhoto]=useState("")
   const reviewCtx = useContext(ReviewContext);
   const userData = authCtx.userData;
+  const [user,setUser]=useState({
+    name:"update profile",
+    image:"https://th.bing.com/th?q=User+Account+Icon&w=120&h=120&c=1&rs=1&qlt=70&o=7&cb=1&dpr=1.3&pid=InlineBlock&rm=3&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247",
+    uid:authCtx.uid,
+  })
 
-  const user ={
+
+  useEffect(()=>{
+    if(userData){
+    const data = {
     name:userData.displayName,
-    email:userData.email,
+    
     image:userData.photoUrl,
-    uid:userData.localId,
+    uid:authCtx.uid,
   }
 
-  //console.log(user)
+  setUser(data)
+    }
+  },[userData])
 
   const handleFormSubmit =(e) =>{
       e.preventDefault()

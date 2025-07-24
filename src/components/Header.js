@@ -11,7 +11,6 @@ const navigate = useNavigate();
 const authCtx = useContext(AuthContext);
 
 
-
 window.addEventListener('scroll',()=>{
   const heading = document.querySelector(".heading");
   const scrollY = window.scrollY;
