@@ -8,9 +8,9 @@ const Modal = (props) => {
 
   const portalElement = document.getElementById("overlays");
   
+  
 
-
-  console.log(props.onClose);
+  //console.log(props.onClose);
 
   return (
     

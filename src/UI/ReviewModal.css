@@ -12,9 +12,9 @@
 
 .review-modal-card{
     position: fixed;
-    top: 20vh;
+    top: 10vh;
     left: 30%;
-    height: 21rem;
+    height: 24rem;
     width: 30rem;
     background-color: rgb(0, 0, 26);
     padding: 20px;
@@ -24,6 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -2rem;
     
 }
 

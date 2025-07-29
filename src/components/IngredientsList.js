@@ -6,8 +6,6 @@ import { GrStatusGood } from "react-icons/gr";
 import { RxCrossCircled } from "react-icons/rx";
 import { MdDangerous } from "react-icons/md";
 import { IoWarning } from "react-icons/io5";
-
-
 import AuthContext from '../context/auth-context';
 import IngredientsContext from '../context/ingredients-contex';
 
@@ -49,6 +47,7 @@ const IngredientsList = (props) => {
   let list = props.items;
   const ingredientsCtx = useContext(IngredientsContext)
   const authCtx =useContext(AuthContext)
+
     let user ={
     name:"update profile",
     uid:authCtx.uid,
@@ -68,7 +67,7 @@ useEffect(()=>{
   }
 },[authCtx.userData])
 
-console.log(userProfile)
+//console.log(userProfile)
 
  const countItem = (list) =>{
 
@@ -93,7 +92,7 @@ console.log(userProfile)
   const total  = countItem(list);
 //console.log(total.goodInredient)
   const  ingredientsData = 
-  {list,
+  {list:[...list],
     res:null,
     userProfile,
 
@@ -112,7 +111,7 @@ console.log(userProfile)
 
     setHistoryData(ingredientsData)
     ingredientsCtx.createHistory(ingredientsData)
-console.log(historyData)
+//console.log(historyData)
 
 
 
@@ -124,7 +123,7 @@ console.log(historyData)
 
   const handleClose = () => {
     setActive(false)
-    //list.length =0;
+    list.length=0;
 
   }
   

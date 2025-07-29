@@ -28,6 +28,7 @@ function App() {
 
     useEffect(()=>{
       ingredientsCtx.getHistoryData()
+      authCtx.getUserProfileData()
     },[isLoggedIn])
 
 

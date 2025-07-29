@@ -52,7 +52,7 @@ const [historyData, setHistoryData] = useState([])
     try{
         const res = await axios.get(`${api_key}/history/${storeUid}.json`);
         const response = res.data;
-        console.log(response)
+        //console.log(response)
         const data=[]
         
         for(let key in response){
@@ -79,7 +79,7 @@ const [historyData, setHistoryData] = useState([])
    //console.log(historyData)
 
     const ingredientsValue = {
-   
+    
     
     createHistory,
     historyData,

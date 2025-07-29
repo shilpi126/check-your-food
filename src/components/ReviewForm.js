@@ -7,6 +7,7 @@ import { Label } from '../UI/Label';
 
 import ReviewContext from '../context/review-context';
 import AuthContext from '../context/auth-context';
+import axios from 'axios';
 
 const ReviewForm = (props) => {
 
@@ -15,6 +16,7 @@ const ReviewForm = (props) => {
   const [reviewText, setReviewText]=useState("");
   const [productName, setProductName]=useState("");
   const [photo, setPhoto]=useState("")
+  const [waitForUpload, setWaitForUpload] = useState(false)
   const reviewCtx = useContext(ReviewContext);
   const userData = authCtx.userData;
   const [user,setUser]=useState({
@@ -37,22 +39,67 @@ const ReviewForm = (props) => {
     }
   },[userData])
 
-  const handleFormSubmit =(e) =>{
+
+
+  const uploadFileData = async(file) => {
+    
+    const formData = new FormData();
+    formData.append("file",file);
+    formData.append("cloud_name","deb3zjo1c");
+    formData.append("upload_preset","review_image")
+
+
+
+    const response = await axios.post("https://api.cloudinary.com/v1_1/deb3zjo1c/image/upload",formData);
+    const data = await response.data;
+    return data.secure_url;
+  }
+
+
+  const handleImageUpload = async(e) => {
+   try{
+    setWaitForUpload(true)
+ const file = e.target.files[0];
+      if(!file)return;
+
+
+      if(file){
+      
+        //console.log(file )
+        const imageUrl =  await uploadFileData(file);
+        if(!imageUrl){
+          console.log("wait")
+        }else{
+        console.log(imageUrl)
+        setPhoto(imageUrl);
+        }
+        
+        }
+   }catch(err){
+ console.log(err)
+   }
+      setWaitForUpload(false)
+      }
+  
+
+
+  const handleFormSubmit =async(e) =>{
       e.preventDefault()
-      console.log(rating)
+      try{
+
       const productData = {
         reviewText,
         rating,
         productName,
         photo,
         user,
-
-
       }
-      //console.log(productData)
-      reviewCtx.createReview(productData);
-      
+    //console.log(productData)
+    reviewCtx.createReview(productData);
       props.onClose(false)
+    }catch(err){
+    console.log(err)
+    }
   }
 
 
@@ -60,10 +107,14 @@ const ReviewForm = (props) => {
 
   return (
     <div  className='review-bg-box'>
-      <h2 className='review-title'>Review Form</h2>
+ 
 
         <div className='review-form-container'>
           <h1 >< CiLock/></h1>
+          <h2 className='review-title'>Review Form</h2>
+          <div className='wait-image-text'>
+          {waitForUpload && <p className='wait-image-text'>Please Wait, image is uploading...</p>}
+          </div>
 
           <form onSubmit={handleFormSubmit}>
             <div>
@@ -91,7 +142,7 @@ const ReviewForm = (props) => {
               text="Review :"
               className="custom-label"
               />
-                <Input
+              <Input
               type='reviewText'
               id='reviewText'
               value={reviewText}
@@ -109,26 +160,24 @@ const ReviewForm = (props) => {
               className="custom-label"
               />
               <Input
-              type='url'
+              type='file'
               id='photo'
-              onChange={(e)=>setPhoto(e.target.value)}
-              
+              onChange={handleImageUpload}
               placeholder='Enter photo...'
               required
               className="custom-input"
               />
             </div>
-
-                <div>
-              
+            <div>
               <Label
               htmlFor="rating"
-              text="Review :"
+              text="Rating :"
               className="custom-label"
               />
               <select 
               id='rating'
               value={rating}
+              required
               onChange={(e)=>setRating(e.target.value)}
               className='custom-input'
               >
@@ -141,11 +190,24 @@ const ReviewForm = (props) => {
               </select>
             </div>
 
-            <Button 
+
+            {waitForUpload && <button 
+            type='submit'
+            className='custom-button'
+            
+            style={{backgroundColor:"gray"}}
+            disabled
+            >Submit</button>
+            
+            }
+
+
+{!waitForUpload &&   <Button 
             type='submit'
             className='custom-button'
             text="Submit"
-            />
+            />}
+           
 
           </form>
         </div>
@@ -153,5 +215,6 @@ const ReviewForm = (props) => {
     </div>
   )
 }
+
 
 export default ReviewForm

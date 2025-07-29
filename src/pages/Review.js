@@ -24,7 +24,7 @@ import EditReviewModal from '../UI/EditReviewModal';
     const [editData, setEditData] =useState(null)
 
     const[uniqueTitles,setUniqueTitles] = useState(["all"])
-const [activeReview, setActiveReview] = useState([])
+    const [activeReview, setActiveReview] = useState([])
 
 
 
@@ -87,7 +87,7 @@ const [activeReview, setActiveReview] = useState([])
       {isEditReview && <EditReviewModal editdata={editData} onClose={(e)=>{setIsEditReview(false)}}/>}
       {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
         
-      {!reviewData &&<div className='spin'> <Loading /></div>}
+      {!reviewData && <div className='spin'> <Loading /></div>}
 
           {!reviewForm && 
 
