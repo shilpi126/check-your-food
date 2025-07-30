@@ -15,13 +15,14 @@ const ReviewModal = (props) => {
   return (
     
     <>
-        {ReactDOM.createPortal(
+        {/* {ReactDOM.createPortal(
         <div className='review-modal-bg'></div>
         ,portalElement
-        )}
+        )} */}
 
 
         {ReactDOM.createPortal(
+           <div className='review-modal-bg'>
         <div className='review-modal-card'> 
         <ReviewForm onClose={props.onClose}/>
 
@@ -29,7 +30,7 @@ const ReviewModal = (props) => {
         <button className='review-modal-btn' onClick={props.onClose}><IoCloseSharp size={25}/></button>
       
 
-        </div>,portalElement)}
+        </div></div>,portalElement)}
         </>
 
     

@@ -26,10 +26,9 @@
 .review-form-container {
     width: 100%;
     height: auto;
-    /* box-shadow: 0 4px 8px rgba(202, 206, 212, 0.5);
-     */
-     margin-left: -8rem;
-   
+    margin-left: -10rem;
+    
+    
 }
 
 .review-form-container form{
@@ -39,7 +38,7 @@
     align-items: center;
     
     flex-direction: column;
-    /* padding:5px ; */
+    
     
     
     
@@ -140,11 +139,11 @@ p a{
 
 .review-form-container {
     
-    /* padding-top: 1rem;
-    margin-top: 20rem;
-    margin-left: -10rem;
     
-     */
+    /* margin-top: 21rem;
+    margin-left: -10rem; */
+    
+    
     
 }
 
