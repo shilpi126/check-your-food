@@ -6,7 +6,7 @@ import IngredientsContext from '../context/ingredients-contex'
 const History = () => {
   const ingredientsCtx = useContext(IngredientsContext)
   let response = ingredientsCtx.historyData;
-  console.log(response)
+  //console.log(response)
   const [historyData,setHistoryData]=useState([])
  const [sortBy,setSortBy] = useState("")
 
@@ -16,7 +16,7 @@ if(response.length > 0){
 }
 },[response])
 
-console.log(historyData)
+//console.log(historyData)
 
   const handleSortData = (sortBy ) => {
     const desendingPriority = { worst:1, moderate:2, good:3}
@@ -37,7 +37,7 @@ console.log(historyData)
       setHistoryData(sorted)
   }
 
-  console.log(historyData)
+  //console.log(historyData)
 
   return (
     <div>

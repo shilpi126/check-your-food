@@ -12,6 +12,7 @@
     margin-top: 0;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .titlee {
@@ -33,7 +34,7 @@ margin-top: 0;
     height: 20rem;
     box-shadow: 0 4px 8px rgba(202, 206, 212, 0.5);
     margin-right: 2rem;
-    
+    margin: 1rem;
 }
 
 .form-containerr form{
@@ -41,7 +42,7 @@ margin-top: 0;
     height: 100%;
     display: flex;
     align-items: center;
-    
+   
     flex-direction: column;
     padding:5px ;
     

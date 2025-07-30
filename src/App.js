@@ -19,6 +19,7 @@ import FooterPage from './components/FooterPage';
 import ReviewContext from './context/review-context';
 import IngredientsContext from './context/ingredients-contex';
 
+
 function App() {
   const ingredientsCtx = useContext(IngredientsContext)
   const authCtx = useContext(AuthContext);
@@ -28,7 +29,12 @@ function App() {
 
     useEffect(()=>{
       ingredientsCtx.getHistoryData()
-      authCtx.getUserProfileData()
+      
+    },[isLoggedIn])
+
+
+    useEffect(()=>{
+    authCtx.getUserProfileData()
     },[isLoggedIn])
 
 
@@ -41,6 +47,7 @@ function App() {
       <Route path='/' element={<PrivateRoute><Home/></PrivateRoute> } />
       <Route path='/food' element={<PrivateRoute><Ingredients/></PrivateRoute>}/>
       <Route path='/review' element={<PrivateRoute><Review/></PrivateRoute>}/>
+            
       <Route path='/history' element={<PrivateRoute><History/></PrivateRoute>}/>
       <Route path='/user-profile' element={<PrivateRoute><Profile user={user}/></PrivateRoute>}/>
       
@@ -51,7 +58,7 @@ function App() {
             
       <Route path='/confirm-verify' element={<PublicRoute><VerifyEmailPage/></PublicRoute>  }/>
       </Routes>
-      {/* {isLoggedIn &&  <FooterPage/>} */}
+      {isLoggedIn &&  <FooterPage/>}
       </React.Fragment>
 
       );

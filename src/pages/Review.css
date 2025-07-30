@@ -13,6 +13,8 @@
     background-color: white;
 }
 
+
+
 .total-review-card{
     height: 3rem;
     width: 100%;
@@ -117,6 +119,27 @@
 
 
 
+
+
+.dot{
+    display: flex ;
+    align-items: center;
+    padding-left: 1rem;
+    margin-bottom: -15px;
+    
+
+}
+
+.dot-icon{
+    margin: 10px;
+    
+}
+
+.review-menu{
+    display: none;
+}
+
+
 .product-name{
     font-weight: 400;
     font-size: large;
@@ -127,18 +150,6 @@
     width: 100%;
     padding-left: 0.5rem;
     
-}
-
-.dot{
-    display: flex ;
-    align-items: center;
-    padding-left: 1rem;
-    margin-bottom: -15px;
-
-}
-
-.dot-icon{
-    margin-top: 10px;
 }
 
 
@@ -193,4 +204,79 @@ margin: 1rem;
     border-radius: 50%;
     border: 1px solid orange;
     
+}
+
+.review-sidebar{
+    display: none;
+}
+
+
+@media (max-width:1024px){
+
+
+
+
+
+  
+}
+
+
+@media (max-width:486px){
+    .total-review-card p{
+    color:white;
+    font-weight: 500;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.review-menu{
+    display: block;
+    
+}
+
+.review-product{
+    display: none;
+}
+
+.review-sidebar{
+display: block;
+    height: auto;
+    width: 50%;
+    background-color: rgb(1, 15, 55);
+    color: white;
+    z-index: 999;
+    position: absolute;
+    left: 0;
+    padding-bottom: 2rem;
+}
+
+
+
+
+.review-btn-box {
+    margin-top: -1.5rem;
+    width: 100%;
+    
+}
+.review-btn-box button{
+    
+    width: 40%;
+    margin-bottom: 1rem;
+    
+    
+}
+
+
+.review-container{
+   height: auto;
+   width: 100%;
+}
+
+.review-container .card{
+    flex-direction: column;
+    
+    
+}
+
+  
 }

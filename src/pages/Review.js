@@ -3,7 +3,7 @@
   import { IoIosAddCircle } from "react-icons/io";
 
   import { MdEdit } from "react-icons/md";
-  import { FaStar } from "react-icons/fa";
+  import { FaBars, FaStar } from "react-icons/fa";
   import ReviewModal from '../UI/ReviewModal';
   import ReviewContext from '../context/review-context';
 import Loading from '../components/Loading';
@@ -18,7 +18,7 @@ import EditReviewModal from '../UI/EditReviewModal';
     const uid =localStorage.getItem("uid")
     const reviewCtx = useContext(ReviewContext)
     let reviewData = reviewCtx.reviewData;
-
+    const [toggle,setToggle] =useState(false)
     const[reviewForm,setReviewForm]=useState(false)
     const[isEditReview, setIsEditReview]=useState(false)
     const [editData, setEditData] =useState(null)
@@ -55,6 +55,7 @@ import EditReviewModal from '../UI/EditReviewModal';
 
     
     const filterProductReview = (productName)=>{
+     
       if(productName === "all"){
         setActiveReview(reviewData)
       }else{
@@ -63,6 +64,8 @@ import EditReviewModal from '../UI/EditReviewModal';
     const productReview = reviewData?.filter((item)=>item.productName.toLowerCase() === productName.toLowerCase())
     setActiveReview(productReview)
       }
+
+      setToggle(false)
     
     }
         
@@ -81,9 +84,25 @@ import EditReviewModal from '../UI/EditReviewModal';
       setReviewForm(true);
     }
 
+
+    const toggleSidebar=()=>{
+      setToggle(!toggle);
+    }
+
+
+
+
+
+
+
+
     return (
       <>
-      <div className='total-review-card'><p>Total Reviews : {reviewData.length} </p> <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> </div>
+      <div className='total-review-card'>
+              <button  onClick={toggleSidebar} className='review-menu'><FaBars size={25}/></button> 
+        <p>Total Reviews : {reviewData.length} </p> 
+      <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> 
+      </div>
       {isEditReview && <EditReviewModal editdata={editData} onClose={(e)=>{setIsEditReview(false)}}/>}
       {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
         
@@ -93,17 +112,37 @@ import EditReviewModal from '../UI/EditReviewModal';
 
           <div className='review-box'>
             
-            <div className='review-product' >
+            {!toggle &&  <div className='review-product' >
               
                 {uniqueTitles && uniqueTitles.map((productName,index)=>(
-                <div className='dot' key={index}>
+              
+                  <div className='dot' key={index}>
                 <BiFoodTag  size={20}  className='dot-icon'/>
-                <h3 key={index} className='product-name' onClick={()=>filterProductReview(productName)}>{productName}</h3>
+                  <h3 key={index} className='product-name' onClick={()=>filterProductReview(productName)}>{productName}</h3>
+                
                 </div>
+              
+                
                 ))}
                   
 
-              </div>
+              </div>}
+
+              {toggle &&  <div className='review-sidebar' >
+              
+                {uniqueTitles && uniqueTitles.map((productName,index)=>(
+              
+                  <div className='dot' key={index}>
+                <BiFoodTag  size={20}  className='dot-icon'/>
+                  <h3 key={index} className='product-name' onClick={()=>filterProductReview(productName)}>{productName}</h3>
+                
+                </div>
+              
+                
+                ))}
+                  
+
+              </div>}
               
 
           {activeReview && 
@@ -123,7 +162,7 @@ import EditReviewModal from '../UI/EditReviewModal';
                       <div className='card' >
                         
                       <div className='user-review'>
-                      <p>{review?.productName}</p>
+                      <p style={{fontWeight:"normal"}}>{review?.productName}</p>
                       <img src={review?.image} className='review-img' alt='pic...'/>
 
                       <p className='comment'>{review?.reviewText}</p>
