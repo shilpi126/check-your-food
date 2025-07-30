@@ -15,10 +15,13 @@ const Ingredients = () => {
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
+
+        const normalizedData = data.map((item)=>item.toLowerCase().trim());
+        const normalizedIngredients = ingredients.toLowerCase().trim();
         
         let obj = {
           ingredients,
-          found:data.includes(ingredients),
+          found:normalizedData.includes(normalizedIngredients),
         }
         
         
