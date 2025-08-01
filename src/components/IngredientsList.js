@@ -67,7 +67,7 @@ useEffect(()=>{
   }
 },[authCtx.userData])
 
-//console.log(userProfile)
+
 
  const countItem = (list) =>{
 
@@ -128,7 +128,7 @@ useEffect(()=>{
   }
   
 
-  //console.log(active)
+
   
   return (
     <React.Fragment>
@@ -145,7 +145,7 @@ useEffect(()=>{
     </div>
 }
     {list.length === 0 &&
-      <button className='btn' disabled style={{backgroundColor:"gray", color:"black"}}>Is Your Food Healthy</button>
+      <button className='btn' disabled style={{backgroundColor:"gray", color:"white"}}>Is Your Food Healthy</button>
       }
       {list.length > 0 &&
       <button className='btn'  onClick={handleClick}>Is Your Food Healthy</button>

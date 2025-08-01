@@ -74,7 +74,7 @@ const Ingredients = () => {
           </form>
             <div className='item-card'>
         <IngredientsList items={item}/>
-    </div >
+            </div >
         </div>
       
     </div>

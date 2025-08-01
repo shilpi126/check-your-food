@@ -8,6 +8,7 @@ import { Label } from '../UI/Label';
 import ReviewContext from '../context/review-context';
 import AuthContext from '../context/auth-context';
 import axios from 'axios';
+import { IoCloseSharp } from 'react-icons/io5';
 
 const ReviewForm = (props) => {
 
@@ -107,9 +108,9 @@ const ReviewForm = (props) => {
 
   return (
     <div  className='review-bg-box'>
- 
-
         <div className='review-form-container'>
+        <div className='review-close-btn'> <button  onClick={props.onClose}><IoCloseSharp size={25}/></button>
+        </div>
           <h1 >< CiLock/></h1>
           <h2 className='review-title'>Review Form</h2>
           <div className='wait-image-text'>

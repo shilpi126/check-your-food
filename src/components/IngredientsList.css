@@ -14,16 +14,18 @@
 
 
 .list{
-    height: 25px;
+    height: 1rem;
     
     
-    border: 1px solid gray;
-    width: 5rem;
+    border: 1px solid rgb(112, 110, 110,0.5);
+    width: auto;
     margin: 5px;
+    padding: 5px;
     
     
     border-radius: 30px;
     display: flex;
+    font-size: small;
     justify-content: center;
     align-items: center;
     
@@ -62,14 +64,14 @@ margin: 5px;
 
 
 .btn{
-    height: 2.5rem;
-    width: 10rem;
+    height: 3rem;
+    width: 100%;
     background-color: rgba(1, 1, 58, 0.919);
     color: white;
     border: none;
-    font-size: small;
+    font-size: large;
     border-radius: 5px;
     margin-top: 1rem;
     
-
+    margin-bottom: 2rem;
 }

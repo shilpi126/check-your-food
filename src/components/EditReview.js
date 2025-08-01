@@ -7,6 +7,7 @@ import { Label } from '../UI/Label';
 
 import ReviewContext from '../context/review-context';
 import axios from 'axios';
+import { IoCloseSharp } from 'react-icons/io5';
 
 
 const EditReview = (props) => {
@@ -90,6 +91,8 @@ console.log(props.editdata)
 
 
         <div className='review-form-container'>
+             <div className='review-close-btn'> <button  onClick={props.onClose}><IoCloseSharp size={25}/></button>
+                  </div>
         <h1 >< CiLock/></h1>
         <h2 className='review-title'>Edit Review </h2>
         <div className='wait-image-text'>

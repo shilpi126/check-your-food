@@ -58,7 +58,7 @@ function App() {
             
       <Route path='/confirm-verify' element={<PublicRoute><VerifyEmailPage/></PublicRoute>  }/>
       </Routes>
-      {isLoggedIn &&  <FooterPage/>}
+      {/* {isLoggedIn &&  <FooterPage/>} */}
       </React.Fragment>
 
       );

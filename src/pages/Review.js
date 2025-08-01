@@ -22,7 +22,7 @@ import EditReviewModal from '../UI/EditReviewModal';
     const[reviewForm,setReviewForm]=useState(false)
     const[isEditReview, setIsEditReview]=useState(false)
     const [editData, setEditData] =useState(null)
-
+    const [loading, setLoading]=useState(true);
     const[uniqueTitles,setUniqueTitles] = useState(["all"])
     const [activeReview, setActiveReview] = useState([])
 
@@ -48,7 +48,7 @@ import EditReviewModal from '../UI/EditReviewModal';
   if(reviewData.length > 0){
     setActiveReview(reviewData)
     findUnique()
-    
+    setLoading(false)
 
   }
     },[reviewData])
@@ -92,21 +92,17 @@ import EditReviewModal from '../UI/EditReviewModal';
 
 
 
-
-
-
-
     return (
       <>
       <div className='total-review-card'>
-              <button  onClick={toggleSidebar} className='review-menu'><FaBars size={25}/></button> 
-        <p>Total Reviews : {reviewData.length} </p> 
+      <button  onClick={toggleSidebar} className='review-menu'><FaBars size={20}/></button> 
+      <p>Total Reviews : {reviewData.length} </p> 
       <button  onClick={openReviewForm}><IoIosAddCircle size={25}/></button> 
       </div>
       {isEditReview && <EditReviewModal editdata={editData} onClose={(e)=>{setIsEditReview(false)}}/>}
       {reviewForm && <ReviewModal onClose={(e)=>{setReviewForm(false)}}/>}
         
-      {!reviewData && <div className='spin'> <Loading /></div>}
+      {loading && <div className='spin'> <Loading /></div>}
 
           {!reviewForm && 
 

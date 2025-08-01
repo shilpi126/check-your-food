@@ -2,35 +2,26 @@
 
 .review-modal-bg{
     position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    
-    margin: 1rem;
-    background-color:rgb(10, 10, 10,0.5);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241, 245, 245,0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .review-modal-card{
-    /* position: absolute;
-    top: 10vh;
-    left: 30%; */
-    height: 25rem;
-    width: 25rem;
-    background-color: transparent;
-    background-color: rgb(0, 0, 26);
-    
-    z-index: 1000;
-    border-radius: 5px;
-    color: white;
+    width: 30rem;
+    height: auto;
+    background-color: rgb(2, 16, 63);
+    z-index: 3000;
+    padding: 1rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     
-    
-    margin-top: -2rem;
     
 }
 
@@ -55,23 +46,6 @@
 
 
 
-@media (max-width:486px){
-
-
-.review-modal-card{
-    position: absolute;
-    height: 100%;
-    width: 90%;
-    margin-left: -10rem;
-    
-    
-    
-    
-}
-
-
-  
-}
 
 
 

@@ -10,21 +10,16 @@ const Modal = (props) => {
   
   
 
-  //console.log(props.onClose);
 
   return (
     
     <>
+        
         {ReactDOM.createPortal(
-        <div className='modal-bg'></div>
-        ,portalElement
-        )}
-
-
-        {ReactDOM.createPortal(
+        <div className='modal-bg'>
         <div className='modal-card'> 
         <div className='modal-chart'>
-        <p style={{color:"black"}}>charts</p>
+
         <IngredientsChartPage list={props.list}/>
         </div>
 
@@ -34,8 +29,8 @@ const Modal = (props) => {
         <p className='des'>{props.res.description}</p>
         <button className='modal-btn' onClick={props.onClose}>close</button>
       
-</div>
-        </div>,portalElement)}
+        </div>
+        </div></div>,portalElement)}
         </>
 
     

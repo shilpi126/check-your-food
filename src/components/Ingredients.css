@@ -11,12 +11,13 @@
 
 .bg-card{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
-justify-content: space-between;
+justify-content: center;
 align-items: center;
 
     margin-top: 1rem;
+    
     
 
 }
@@ -25,20 +26,24 @@ align-items: center;
 
 .first-card{
     width: 45%;
-    height: 400px;
     
+    height: 16rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .first-card img{
-    width: 95%;
-    height: auto;
-    border-radius: 5px;
-    margin: 1rem;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    
+
 }
 
 
 .form-card {
-  
+    
     width: 45%;
     height: 15rem;
     background-color: white;
@@ -105,7 +110,7 @@ align-items: center;
 .custom-btn{
     
     width: 10rem;
-    height: 2rem;
+    height: 2.5rem;
     background-color: rgb(99, 98, 98);
     margin-top: 20px;
     border-radius: 3px;
@@ -131,6 +136,7 @@ align-items: center;
     align-items: center;
     flex-direction: column;
     width: 100%;
+ 
 }
 
 
@@ -141,26 +147,34 @@ align-items: center;
 
  .bg-card{
     flex-direction: column;
-    justify-content: start;
+ 
  }
 
   .first-card{
         width: 100%;
+        margin-bottom: 4rem;
         height: auto;
+        
+
     }
 
     .first-card img{
         width: 90%;
-        margin: 1rem;
+        
+        border: 5px;
+        
     }
 
     .form-card{
-        width: 100%;
-        margin: 2rem;
+        width: 90%;
+        /* margin-top: 4rem; */
+        margin: 0;
+
     }
 
     .form-card form{
-    width: 90%;
+    width: 100%;
+   
 
     }
 
@@ -168,38 +182,6 @@ align-items: center;
 
 
   
-}
-
-
-
-
-@media (max-width: 480px){
-    .bg-card{
-        flex-direction: column;
-        justify-content: start;
-        
-    }
-
-    .first-card{
-        width: 100%;
-        height: auto;
-    }
-
-    .first-card img{
-        width: 90%;
-        margin: 1rem;
-    }
-
-    .form-card{
-        width: 100%;
-        margin: 2rem;
-    }
-
-    .form-card form{
-    width: 90%;
-
-    }
-   
 }
 
 
