@@ -179,8 +179,8 @@ import EditReviewModal from '../UI/EditReviewModal';
                       {review.user.uid === uid && 
                       <div className='review-btn-box'>
 
-                          <button onClick={(e)=>{handleEdit(review)}}><MdEdit color='green' size={22}/></button>
-                          <button onClick={(e)=>handleDelete(review?.id)}><RxCross2 size={25} color='red'/></button>
+                          <button onClick={(e)=>{handleEdit(review)}}><MdEdit color='white' size={22}/></button>
+                          <button onClick={(e)=>handleDelete(review?.id)}><RxCross2 size={25} color='white'/></button>
                           
                       </div>
   }
